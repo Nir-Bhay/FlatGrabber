@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlatGrabber Privacy Policy: Chrome Web Store Compliant Documentation</title>
+    <meta name="description" content="FlatGrabber Chrome Extension Privacy Policy. Detailed description of zero-data collection, local processing storage, and strict activeTab and clipboardWrite permission usage.">
+    <meta name="keywords" content="FlatGrabber privacy, Chrome Web store privacy policy, developer compliance data rules">
+    <link rel="canonical" href="https://github.com/Nir-Bhay/FlatGrabber/blob/main/privacy.html">
+    <meta name="robots" content="index, follow">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="landing.css">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="container nav-wrap">
+            <a href="index.html" class="logo-wrap">
+                <img src="icon48.png" alt="FlatGrabber Logo">
+                <span class="logo-text">FlatGrabber</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="docs.html">Documentation</a></li>
+                <li><a href="changelog.html">Changelog</a></li>
+                <li>
+                    <a href="https://github.com/Nir-Bhay/FlatGrabber" target="_blank" class="btn-github">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="color: #ffffff;"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        GitHub
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="container">
+        <div class="legal-wrap">
+            <div class="legal-header">
+                <h1>Privacy Policy</h1>
+                <p>Last Updated: May 31, 2026 | Effective Date: May 31, 2026</p>
+            </div>
+            
+            <div class="legal-body">
+                
+                <div class="legal-section">
+                    <h2>1. Overview</h2>
+                    <p>FlatGrabber ("we", "our", or "the extension") is a developer-focused browser extension designed to inspect, edit, recolor, and copy SVG vector graphics directly from Flaticon into design platforms like Figma. Your privacy is exceptionally important to us. This Privacy Policy documents our strict compliance with Chrome Web Store Developer Policies regarding data handling, emphasizing that we collect absolutely zero user data.</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>2. Zero Data Collection & Processing Policy</h2>
+                    <p>FlatGrabber is engineered to operate 100% locally on your machine. We do not operate external database frameworks or remote analysis servers. Our data processing limits are documented below:</p>
+                    <ul>
+                        <li><strong>No Personal Information:</strong> We do not collect names, email addresses, phone numbers, IP addresses, or device identifiers.</li>
+                        <li><strong>No Browsing History:</strong> The extension does not track, store, or transmit your web browsing history, search terms, or page interactions outside of the specific target editor frame of flaticon.com.</li>
+                        <li><strong>No Graphic Logging:</strong> Your copied vector data, SVG codes, color pallette configurations, and saved collection libraries exist solely within your active browser runtime. We never transmit your creative assets to external networks.</li>
+                        <li><strong>No Analytics Tracking:</strong> We do not embed Google Analytics, Mixpanel, Hotjar, or any other tracking snippets inside the popup or content scripts.</li>
+                    </ul>
+                </div>
+
+                <div class="legal-section">
+                    <h2>3. Permissions Breakdown & Rationale</h2>
+                    <p>To run securely in Manifest V3, FlatGrabber requests specific permissions. Natively, Chrome forces extensions to state these declarations clearly. Below is our explicit usage justification:</p>
+                    <ul>
+                        <li><strong><code>activeTab</code>:</strong> Allows FlatGrabber to temporarily execute script layers and style systems inside Flaticon pages specifically when you are actively interacting with them. This avoids running broad, background scripts across all open tabs, reducing CPU overhead.</li>
+                        <li><strong><code>clipboardWrite</code>:</strong> Necessary to serialize grabbed XML vectors inside standard <code>text/html</code> payload envelopes and inject them directly into your operating system's active clipboard, allowing zero-friction vector pasting inside Figma.</li>
+                        <li><strong><code>scripting</code>:</strong> Required to securely execute our canvas DOM inspection, canvas traversal logic, and inline CSS layout modifications in the Flaticon tab context.</li>
+                    </ul>
+                </div>
+
+                <div class="legal-section">
+                    <h2>4. Local Data Storage & Persistence</h2>
+                    <p>When you click "Save Asset" in FlatGrabber's sidebar, the icon coordinates are saved in your browser's local sandbox using Chrome's <code>chrome.storage.local</code> API. This data remains completely local to your browser partition and is never synced across Google accounts or uploaded to third-party databases. Clearing your browser's cached extension data or uninstalling FlatGrabber will permanently erase this saved local library.</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>5. Security of Information</h2>
+                    <p>Since all operations occur within the secure local boundary of Chrome's sandbox environment, your data is protected by the host operating system's native file security and Chrome's standard process isolation layers. We encourage all open-source developers to inspect our source files on GitHub to confirm our security practices.</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>6. Compliance with Chrome Web Store Policies</h2>
+                    <p>This privacy policy is structured to meet Google's strict Chrome Web Store User Data Policy guidelines concerning Limited Use, Single-Purpose, and Permission Minimization. FlatGrabber does not bypass Google security structures or participate in any deceptive distribution tactics.</p>
+                </div>
+
+                <div class="legal-section">
+                    <h2>7. Contact and Support</h2>
+                    <p>If you have questions, feedback, or security inquiries regarding FlatGrabber, please submit an issue on our official open-source GitHub repository at: <a href="https://github.com/Nir-Bhay/FlatGrabber" target="_blank">https://github.com/Nir-Bhay/FlatGrabber</a>.</p>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <img src="icon48.png" alt="FlatGrabber logo">
+                <span>FlatGrabber</span>
+            </div>
+            <p>Designed and documented for advanced UI/UX design workflow integration.</p>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="docs.html">Documentation</a></li>
+                <li><a href="changelog.html">Changelog</a></li>
+                <li><a href="privacy.html" class="active">Privacy Policy</a></li>
+            </ul>
+            <p style="margin-top: 15px; font-size: 11px; color: rgba(255,255,255,0.25);">Licensed under MIT. Open Source project &copy; 2026. Optimized for AEO & Google Rich Results.</p>
+        </div>
+    </footer>
+</body>
+</html>

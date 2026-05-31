@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlatGrabber Documentation Hub: Developer & Designer Integration Specifications</title>
+    <meta name="description" content="In-depth technical guides, dynamic event interception documentation, keyboard shortcuts, and Figma clipboard bridge format details for FlatGrabber.">
+    <meta name="keywords" content="FlatGrabber documentation, Chrome extension help, Figma vector integration, Flaticon SVG parser, SVG DOM scraper guide">
+    <link rel="canonical" href="https://github.com/Nir-Bhay/FlatGrabber/blob/main/docs.html">
+    <meta name="robots" content="index, follow">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="landing.css">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="container nav-wrap">
+            <a href="index.html" class="logo-wrap">
+                <img src="icon48.png" alt="FlatGrabber Logo">
+                <span class="logo-text">FlatGrabber</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="docs.html" class="active">Documentation</a></li>
+                <li><a href="changelog.html">Changelog</a></li>
+                <li>
+                    <a href="https://github.com/Nir-Bhay/FlatGrabber" target="_blank" class="btn-github">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="color: #ffffff;"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        GitHub
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="container">
+        <div class="doc-grid">
+            
+            <!-- Sticky Sidebar Nav -->
+            <aside class="doc-sidebar">
+                <ul class="doc-nav-list">
+                    <li class="doc-nav-item active" data-tab="tab-overview">
+                        <button>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+                            Architecture Overview
+                        </button>
+                    </li>
+                    <li class="doc-nav-item" data-tab="tab-interception">
+                        <button>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                            DOM Interception Engine
+                        </button>
+                    </li>
+                    <li class="doc-nav-item" data-tab="tab-figma">
+                        <button>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3H7a4 4 0 00-4 4v10a4 4 0 004 4h10a4 4 0 004-4V7a4 4 0 00-4-4z"/><circle cx="12" cy="12" r="3"/></svg>
+                            Figma Clipboard Bridge
+                        </button>
+                    </li>
+                    <li class="doc-nav-item" data-tab="tab-shortcuts">
+                        <button>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"/><line x1="6" y1="8" x2="6" y2="8"/><line x1="10" y1="8" x2="10" y2="8"/><line x1="14" y1="8" x2="14" y2="8"/><line x1="18" y1="8" x2="18" y2="8"/><line x1="6" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="18" y2="12"/><line x1="7" y1="16" x2="17" y2="16"/></svg>
+                            Hotkeys Reference
+                        </button>
+                    </li>
+                    <li class="doc-nav-item" data-tab="tab-recolor">
+                        <button>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"/><path d="M12 18A6 6 0 1 0 12 6V18Z"/></svg>
+                            Recoloring Processing
+                        </button>
+                    </li>
+                </ul>
+            </aside>
+
+            <!-- Dynamic Tab Contents -->
+            <section class="doc-content-wrap">
+                
+                <!-- Tab: Overview -->
+                <div class="doc-tab-panel active" id="tab-overview">
+                    <h2>Architecture Overview</h2>
+                    <p>FlatGrabber is designed on a modular, local-first extension architecture running inside Google Chrome's Manifest V3 ecosystem. Unlike traditional graphics grabbers that use slow server-side scraping pipelines, FlatGrabber operates completely inside the active document frame, intercepting rendering variables in real time.</p>
+                    
+                    <h3>System Data Flow</h3>
+                    <p>The visual diagram below outlines the core pipelines connecting the Flaticon DOM context, FlatGrabber's scraper mechanisms, the clipboard buffer layers, and Figma's native vector engine:</p>
+                    
+                    <div style="text-align: center; margin: 20px 0;">
+                        <img src="docs/assets/unlocking_hack_flow.svg" alt="Unlocking Hack Flow Chart" style="width: 100%; max-width: 680px; border: 1px solid var(--border-color); border-radius: 12px; background: rgba(0,0,0,0.2); padding: 10px;">
+                    </div>
+                    
+                    <p>By bypassing heavy graphic network loads, the extension maintains instant processing time (typically under 4 milliseconds), ensuring that design systems populate without browser delay or CPU spikes.</p>
+                </div>
+
+                <!-- Tab: Interception -->
+                <div class="doc-tab-panel" id="tab-interception">
+                    <h2>DOM Interception Engine</h2>
+                    <p>Flaticon uses aggressive inline listeners to intercept mouse events and redirect users to paid subscriptions or detail cards. To bypass this, FlatGrabber hooks into the event cycle at the <strong>Capture Phase</strong> rather than the standard bubbling phase.</p>
+                    
+                    <h3>Code Implementation: Click Hijack</h3>
+                    <p>By specifying <code>{ capture: true }</code> on our custom UI components, we hook the browser engine before native website listeners can detect the interaction:</p>
+                    
+                    <div class="doc-code-block">
+// content.js - Event Capture Pipeline
+badge.addEventListener('click', (event) => {
+    // Intercept event at capture phase
+    event.stopPropagation();
+    event.preventDefault();
+    
+    // Scrape active SVG coordinates
+    const canvasNode = document.querySelector('.main-editor-canvas svg');
+    if (canvasNode) {
+        processVectorSVG(canvasNode);
+    }
+}, { capture: true });</div>
+
+                    <h3>Canvas Extraction Loop</h3>
+                    <p>When the user launches the editor, FlatGrabber traverses the internal Canvas DOM layers recursively. It isolates coordinate nodes, strips watermarks, verifies layer dimensions, and packages clean vector structures into memory.</p>
+                </div>
+
+                <!-- Tab: Figma Bridge -->
+                <div class="doc-tab-panel" id="tab-figma">
+                    <h2>Figma Clipboard Bridge</h2>
+                    <p>Standard clipboard copy parameters serialize content as pure plain text (<code>text/plain</code>). If you copy an SVG string as text, Figma's canvas importer will render it on screen as a literal code string text block.</p>
+                    
+                    <h3>The MIME-Type Hack</h3>
+                    <p>To trick Figma's engine into translating the XML data as solid vector coordinate layers, FlatGrabber wraps the SVG XML string within a custom HTML template and injects it into the system buffer using the <code>text/html</code> MIME-type:</p>
+
+                    <div class="doc-code-block">
+// content.js - Figma Clipboard Format Compiler
+function copyToFigma(svgString) {
+    // Wrap raw vector in custom span signature recognized by Figma
+    const htmlPayload = `&lt;span class="svg-wrapper"&gt;${svgString}&lt;/span&gt;`;
+    
+    const clipboardData = new ClipboardItem({
+        "text/plain": new Blob([svgString], { type: "text/plain" }),
+        "text/html": new Blob([htmlPayload], { type: "text/html" })
+    });
+    
+    navigator.clipboard.write([clipboardData]).then(() => {
+        showStatusToast("Copied to Figma!");
+    });
+}</div>
+                    
+                    <p>When this HTML wrapper enters Figma's window focus, its native clipboard listener parses the structural spans, extracts the inner child SVG coordinate nodes, and spawns the paths as fully editable vector groups.</p>
+                </div>
+
+                <!-- Tab: Shortcuts -->
+                <div class="doc-tab-panel" id="tab-shortcuts">
+                    <h2>Hotkeys Reference</h2>
+                    <p>Speed is critical for populating massive design libraries. FlatGrabber features a dedicated listener loop mapping active key states when the extension's panel sidebar is open. This enables pure keyboard control of all core utilities.</p>
+                    
+                    <table class="doc-shortcut-table">
+                        <thead>
+                            <tr>
+                                <th>Shortcut Key</th>
+                                <th>Mapped Event Action</th>
+                                <th>Technical Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><kbd>I</kbd></td>
+                                <td>Toggle Inspector Mode</td>
+                                <td>Launches high-fidelity DOM element highlighter. Hover and click any coordinate vector on the screen to grab instantly.</td>
+                            </tr>
+                            <tr>
+                                <td><kbd>C</kbd></td>
+                                <td>Copy SVG to Clipboard</td>
+                                <td>Triggers the Figma clipboard bridge to format active paths and copy them to system memory.</td>
+                            </tr>
+                            <tr>
+                                <td><kbd>S</kbd></td>
+                                <td>Save to Collection</td>
+                                <td>Saves the currently grabbed icon asset into local extension library storage index.</td>
+                            </tr>
+                            <tr>
+                                <td><kbd>Esc</kbd></td>
+                                <td>Close Panel</td>
+                                <td>Hides FlatGrabber panel and returns user focus to Flaticon web frame.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Tab: Recolor -->
+                <div class="doc-tab-panel" id="tab-recolor">
+                    <h2>Recoloring Processing</h2>
+                    <p>FlatGrabber recolors icons dynamically without altering the original coordinate shapes. Rather than using simple regex string replacement (which risks corrupting vector metadata tags), FlatGrabber instantiates a virtual DOM environment using the browser's native <code>DOMParser</code>.</p>
+                    
+                    <h3>Code Implementation: Virtual DOM Recoloring</h3>
+                    <p>The parser compiles the raw string into a structured XML tree, traverses individual vector path layers, replaces color fill properties, and re-serializes the vector to string:</p>
+
+                    <div class="doc-code-block">
+// content.js - Recolor Parser Pipeline
+function updateSVGColors(svgString, targetHexColor) {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(svgString, "image/svg+xml");
+    
+    // Find all fills and strokes and update them
+    const paintNodes = doc.querySelectorAll("[fill], [stroke], path, circle, rect");
+    paintNodes.forEach(node => {
+        if (node.hasAttribute("fill") && node.getAttribute("fill") !== "none") {
+            node.setAttribute("fill", targetHexColor);
+        }
+        if (node.hasAttribute("stroke") && node.getAttribute("stroke") !== "none") {
+            node.setAttribute("stroke", targetHexColor);
+        }
+    });
+    
+    const serializer = new XMLSerializer();
+    return serializer.serializeToString(doc);
+}</div>
+                    
+                    <p>This process guarantees that vector coordinates remain mathematically untouched, ensuring 100% correct curve rendering inside Figma.</p>
+                </div>
+
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <img src="icon48.png" alt="FlatGrabber logo">
+                <span>FlatGrabber</span>
+            </div>
+            <p>Designed and documented for advanced UI/UX design workflow integration.</p>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="docs.html" class="active">Documentation</a></li>
+                <li><a href="changelog.html">Changelog</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+            </ul>
+            <p style="margin-top: 15px; font-size: 11px; color: rgba(255,255,255,0.25);">Licensed under MIT. Open Source project &copy; 2026. Optimized for AEO & Google Rich Results.</p>
+        </div>
+    </footer>
+
+    <!-- Interactive Tab Selector Logic -->
+    <script>
+        const docNavItems = document.querySelectorAll('.doc-nav-list .doc-nav-item');
+        const docTabPanels = document.querySelectorAll('.doc-content-wrap .doc-tab-panel');
+
+        docNavItems.forEach(item => {
+            item.addEventListener('click', () => {
+                // Clear active states
+                docNavItems.forEach(nav => nav.classList.remove('active'));
+                docTabPanels.forEach(panel => panel.classList.remove('active'));
+
+                // Add active state to clicked tab
+                item.classList.add('active');
+                
+                // Show matching panel
+                const targetTabId = item.getAttribute('data-tab');
+                document.getElementById(targetTabId).classList.add('active');
+                
+                // Smooth scroll to top of panel on mobile
+                if (window.innerWidth <= 768) {
+                    document.getElementById(targetTabId).scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

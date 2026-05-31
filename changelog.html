@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlatGrabber Changelog: Chronological Version Logs & Feature Additions</title>
+    <meta name="description" content="Official release version logs, bug fixes, UI improvements, and future roadmap specifications for the FlatGrabber Chrome Extension.">
+    <meta name="keywords" content="FlatGrabber changelog, Chrome extension updates, release version log, bug fixes">
+    <link rel="canonical" href="https://github.com/Nir-Bhay/FlatGrabber/blob/main/changelog.html">
+    <meta name="robots" content="index, follow">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="landing.css">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="container nav-wrap">
+            <a href="index.html" class="logo-wrap">
+                <img src="icon48.png" alt="FlatGrabber Logo">
+                <span class="logo-text">FlatGrabber</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="docs.html">Documentation</a></li>
+                <li><a href="changelog.html" class="active">Changelog</a></li>
+                <li>
+                    <a href="https://github.com/Nir-Bhay/FlatGrabber" target="_blank" class="btn-github">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="color: #ffffff;"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        GitHub
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="container">
+        <div class="changelog-wrap">
+            <div class="changelog-header">
+                <h1>Version History</h1>
+                <p>Tracking release versions, structural modifications, and ecosystem updates of FlatGrabber.</p>
+            </div>
+            
+            <div class="changelog-list">
+                
+                <!-- Version 1.1 -->
+                <div class="changelog-item">
+                    <div class="changelog-marker"></div>
+                    <div class="changelog-meta">
+                        <span class="changelog-version">v1.1</span>
+                        <span class="changelog-date">May 31, 2026</span>
+                        <span class="changelog-tag latest">Latest</span>
+                    </div>
+                    <div class="changelog-body">
+                        <p>This release focuses heavily on standardizing the extension brand to <strong>FlatGrabber</strong>, fixing core display bugs, and deploying complete, rich documentation hubs for developers and designers.</p>
+                        
+                        <h4>✨ Brand Standardization</h4>
+                        <ul>
+                            <li>Renamed extension to <strong>FlatGrabber</strong> in <code>manifest.json</code> name declarations.</li>
+                            <li>Replaced raw text labels inside <code>popup.html</code> to <code>🎨 FlatGrabber</code>.</li>
+                            <li>Updated content script <code>content.js</code> to render <code>FlatGrabber</code> in the injected active panel title block.</li>
+                            <li>Refactored background console warnings and error logging to prefix with <code>FlatGrabber:</code>.</li>
+                        </ul>
+
+                        <h4>🐛 Bug Fixes & Rendering Enhancements</h4>
+                        <ul>
+                            <li><strong>Unicode Character Fix:</strong> Hardcoded <code>&lt;meta charset="UTF-8"&gt;</code> inside <code>popup.html</code> and HTML template builders. This fully resolves character encoding mismatch bugs where emojis (like the paint palette or checkmarks) rendered as garbled characters (<code>ðŸŽ¨</code> or <code>âœ...</code>) on certain browsers.</li>
+                            <li><strong>Native Popup Navigation:</strong> Added <code>popup.js</code> connecting directly to Chrome's native <code>chrome.tabs.create</code> API. Clicking "Open Flaticon Website" in the dropdown now opens the tab cleanly without focus loss or redirection errors.</li>
+                        </ul>
+
+                        <h4>📚 Documentation Hub & Graphics Deployment</h4>
+                        <ul>
+                            <li>Created custom visual SVG flowcharts (<code>installation_flow.svg</code> and <code>unlocking_hack_flow.svg</code>) detailing step timelines.</li>
+                            <li>Created an in-depth <strong>[INSTALL.md](INSTALL.md)</strong> file compiling cloning steps, Chrome developer mode guidelines, console success checks, and update procedures.</li>
+                            <li>Created an in-depth <strong>[GUIDE.md](GUIDE.md)</strong> file detailing the premium unlock hack logic, dynamic colors process, ZIP exporter, and Figma grid parameters.</li>
+                            <li>Migrated inline landing page styles to a unified, highly optimized <strong>[landing.css](landing.css)</strong> stylesheet.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Version 1.0 -->
+                <div class="changelog-item">
+                    <div class="changelog-marker"></div>
+                    <div class="changelog-meta">
+                        <span class="changelog-version">v1.0</span>
+                        <span class="changelog-date">May 24, 2026</span>
+                        <span class="changelog-tag stable">Stable</span>
+                    </div>
+                    <div class="changelog-body">
+                        <p>Initial stable release of FlatGrabber implementing the core canvas interception engine, the custom Figma clipboard bridge, and active libraries management utilities.</p>
+                        
+                        <h4>🔌 Core Interceptor Engine</h4>
+                        <ul>
+                            <li>Implemented the DOM capture-phase listener matrix (<code>{ capture: true }</code>) to block Flaticon's native routing scripts and allow one-click vector node parsing.</li>
+                            <li>Developed recursive canvas traversal algorithms to extract clean, unwatermarked path data directly from Flaticon's active Icon Editor frame.</li>
+                        </ul>
+
+                        <h4>📋 Figma HTML Clipboard Bridge</h4>
+                        <ul>
+                            <li>Developed the custom MIME-type formatter serializing vector codes in <code>text/html</code> structures. Copied vectors now paste in Figma directly as editable coordinate shapes instead of raw code.</li>
+                            <li>Developed the Figma Grid Compiler to package saved vectors into formatted, structured 2D coordinate matrices for instant design board instantiation.</li>
+                        </ul>
+
+                        <h4>🎨 Asset Modification & Library Panels</h4>
+                        <ul>
+                            <li>Developed active <code>DOMParser</code> recoloring processors to change vector color parameters dynamically inside content scripts without math distortion.</li>
+                            <li>Built dark-mode glassmorphic side-panel components, checkers transparency frames, and offline ZIP compression packaging via JSZip.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <img src="icon48.png" alt="FlatGrabber logo">
+                <span>FlatGrabber</span>
+            </div>
+            <p>Designed and documented for advanced UI/UX design workflow integration.</p>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="docs.html">Documentation</a></li>
+                <li><a href="changelog.html" class="active">Changelog</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+            </ul>
+            <p style="margin-top: 15px; font-size: 11px; color: rgba(255,255,255,0.25);">Licensed under MIT. Open Source project &copy; 2026. Optimized for AEO & Google Rich Results.</p>
+        </div>
+    </footer>
+</body>
+</html>
