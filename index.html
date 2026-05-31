@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlatGrabber: Premium Flaticon SVG Extractor & Figma Vector Bridge</title>
+    
+    <!-- Primary SEO Meta Tags -->
+    <meta name="description" content="FlatGrabber is a premium, open-source Chrome extension to inspect, recolor, and grab clean high-fidelity SVGs from Flaticon directly into Figma as editable vector shapes. Bypasses premium subscription gates safely.">
+    <meta name="keywords" content="Flaticon SVG Downloader, Figma Vector Bridge, Chrome SVG Grabber, Inline SVG Extractor, Chrome Extension SVG Parser, Extract SVGs to Figma, Recolor SVGs Online, Premium SVG Unlocker, FlatGrabber, AI Search Engine Optimization">
+    <meta name="author" content="Nir-Bhay">
+    <link rel="canonical" href="https://github.com/Nir-Bhay/FlatGrabber">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://github.com/Nir-Bhay/FlatGrabber">
+    <meta property="og:title" content="FlatGrabber: Premium Flaticon SVG Extractor & Figma Vector Bridge">
+    <meta property="og:description" content="Extract clean, high-fidelity SVGs from Flaticon directly into Figma as editable vector shapes. 100% free open-source Chrome utility.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/Nir-Bhay/FlatGrabber/main/icon.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://github.com/Nir-Bhay/FlatGrabber">
+    <meta property="twitter:title" content="FlatGrabber: Premium Flaticon SVG Extractor & Figma Vector Bridge">
+    <meta property="twitter:description" content="Extract clean, high-fidelity SVGs from Flaticon directly into Figma as editable vector shapes. 100% free open-source Chrome utility.">
+    <meta property="twitter:image" content="https://raw.githubusercontent.com/Nir-Bhay/FlatGrabber/main/icon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Premium CSS Layout & Design System -->
+    <style>
+        :root {
+            --bg-dark: #07080d;
+            --bg-grid: rgba(255, 255, 255, 0.02);
+            --primary-cyan: #17D1C6;
+            --primary-indigo: #6366f1;
+            --accent-pink: #ec4899;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-glow: rgba(23, 209, 198, 0.15);
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --neon-shadow: 0 0 20px rgba(23, 209, 198, 0.35);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(23, 209, 198, 0.08) 0%, transparent 40%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        header {
+            border-bottom: 1px solid var(--border-color);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(7, 8, 13, 0.7);
+        }
+
+        .nav-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+
+        .logo-wrap {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        .logo-wrap img {
+            width: 36px;
+            height: 36px;
+            filter: drop-shadow(0 0 6px var(--primary-cyan));
+        }
+
+        .logo-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            background: linear-gradient(90deg, #ffffff 0%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-cyan);
+        }
+
+        .btn-github {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid var(--border-color);
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn-github:hover {
+            background: rgba(255,255,255,0.12);
+            border-color: rgba(255,255,255,0.2);
+            transform: translateY(-1px);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        @media (max-width: 968px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+            .hero-actions {
+                justify-content: center;
+            }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(23, 209, 198, 0.08);
+            border: 1px solid rgba(23, 209, 198, 0.2);
+            padding: 6px 14px;
+            border-radius: 20px;
+            color: var(--primary-cyan);
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .hero-badge-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--primary-cyan);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--primary-cyan);
+        }
+
+        .hero-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff 30%, #93c5fd 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-title span {
+            background: linear-gradient(90deg, var(--primary-cyan) 0%, #60a5fa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            font-size: 16px;
+            color: var(--text-muted);
+            margin-bottom: 36px;
+            max-width: 580px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--primary-cyan) 0%, #0284c7 100%);
+            border: none;
+            color: #05060b;
+            font-size: 15px;
+            font-weight: 700;
+            padding: 14px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            box-shadow: var(--neon-shadow);
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(23, 209, 198, 0.55);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border-color);
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 14px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(255,255,255,0.2);
+            transform: translateY(-1px);
+        }
+
+        /* Interactive Simulator Mock */
+        .mock-container {
+            position: relative;
+            background: rgba(13, 14, 21, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            backdrop-filter: blur(12px);
+            overflow: hidden;
+            min-height: 380px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mock-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+            margin-bottom: 16px;
+        }
+
+        .mock-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .mock-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+        }
+
+        .mock-dot.active {
+            background: var(--primary-cyan);
+        }
+
+        .mock-title {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .mock-canvas-wrap {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border-radius: 12px;
+            background-color: #0c0d12;
+            min-height: 240px;
+        }
+
+        /* Flaticon checkerboard design */
+        .mock-canvas-area {
+            width: 140px;
+            height: 140px;
+            border: 1px dashed rgba(255,255,255,0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: 
+                linear-gradient(45deg, #11131c 25%, transparent 25%),
+                linear-gradient(-45deg, #11131c 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #11131c 75%),
+                linear-gradient(-45deg, transparent 75%, #11131c 75%);
+            background-size: 16px 16px;
+            background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+            position: relative;
+        }
+
+        .editor-icon-vector {
+            width: 72px;
+            height: 72px;
+            color: var(--text-main);
+            transition: all 0.3s ease;
+        }
+
+        /* Floating Badge */
+        .mock-grab-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(135deg, var(--primary-cyan) 0%, #0099b8 100%);
+            border: none;
+            color: #05060b;
+            font-weight: 700;
+            font-size: 10.5px;
+            padding: 6px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(23, 209, 198, 0.3);
+            display: none;
+            opacity: 0;
+            transform: translate(0, -5px);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .mock-grab-badge.show {
+            display: block;
+            opacity: 1;
+            transform: translate(0, 0);
+        }
+
+        .mock-grab-badge:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 16px rgba(23, 209, 198, 0.5);
+        }
+
+        .simulator-panel {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: #0d0f17;
+            border-left: 1px solid var(--border-color);
+            transform: translate(100%, 0);
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            z-index: 10;
+        }
+
+        .simulator-panel.open {
+            transform: translate(0, 0);
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+            margin-bottom: 12px;
+        }
+
+        .panel-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary-cyan);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .panel-preview-area {
+            flex-grow: 1;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: #08090d;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background-image: 
+                linear-gradient(45deg, #0d0f15 25%, transparent 25%),
+                linear-gradient(-45deg, #0d0f15 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #0d0f15 75%),
+                linear-gradient(-45deg, transparent 75%, #0d0f15 75%);
+            background-size: 16px 16px;
+            background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+        }
+
+        .panel-code-box {
+            background: #050608;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 10px;
+            font-family: monospace;
+            font-size: 9px;
+            color: #8f9bb3;
+            height: 60px;
+            overflow-y: auto;
+            margin-bottom: 12px;
+            white-space: pre-wrap;
+            word-break: break-all;
+            text-align: left;
+        }
+
+        .panel-btn-copy {
+            background: linear-gradient(135deg, var(--primary-cyan) 0%, #0ea5e9 100%);
+            border: none;
+            color: #0b0c10;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.2s ease;
+        }
+
+        .panel-btn-copy:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 15px rgba(23, 209, 198, 0.4);
+        }
+
+        /* Simulator CTAs */
+        .simulator-cta-area {
+            margin-top: 14px;
+            text-align: center;
+        }
+
+        .btn-sim-trigger {
+            background: none;
+            border: 1.5px solid var(--primary-indigo);
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-sim-trigger:hover {
+            background: rgba(99, 102, 241, 0.1);
+            border-color: #818cf8;
+        }
+
+        .btn-sim-reset {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 10px;
+            cursor: pointer;
+            text-decoration: underline;
+            display: none;
+        }
+
+        .btn-sim-reset.show {
+            display: inline-block;
+        }
+
+        /* Toast notifications */
+        .sim-toast {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translate(-50%, 0);
+            background: rgba(23, 209, 198, 0.95);
+            color: #05060b;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(23, 209, 198, 0.3);
+            transition: bottom 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 20;
+        }
+
+        .sim-toast.show {
+            bottom: 12px;
+        }
+
+        /* Features Section */
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 36px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            font-size: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 80px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(23, 209, 198, 0.25);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+        }
+
+        .feature-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary-cyan), var(--primary-indigo));
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .feature-card:hover::after {
+            opacity: 1;
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: rgba(23, 209, 198, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-cyan);
+            margin-bottom: 8px;
+        }
+
+        .feature-card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Unlocking Timeline Hack */
+        .timeline-section {
+            background: rgba(255,255,255,0.01);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 80px 0;
+            margin-bottom: 80px;
+        }
+
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .timeline-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            position: relative;
+        }
+
+        .timeline-num {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1.5px solid var(--primary-indigo);
+            color: var(--primary-indigo);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            margin: 0 auto 16px;
+        }
+
+        .timeline-item h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .timeline-item p {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* FAQ Page (Accordion) */
+        .faq-section {
+            padding-bottom: 80px;
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question-btn {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 20px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #ffffff;
+            font-family: 'Outfit', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .faq-question-btn svg {
+            transition: transform 0.2s ease;
+            color: var(--primary-cyan);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.25s ease-out;
+            background: rgba(0,0,0,0.1);
+        }
+
+        .faq-answer-inner {
+            padding: 0 24px 20px;
+            font-size: 13.5px;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .faq-item.active {
+            border-color: rgba(23, 209, 198, 0.2);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .faq-item.active .faq-question-btn svg {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 40px 0;
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        footer a {
+            color: var(--primary-cyan);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+            color: #ffffff;
+            font-family: 'Outfit', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .footer-logo img {
+            width: 24px;
+            height: 24px;
+        }
+    </style>
+
+    <!-- Google Stacked JSON-LD Structured Data Schema Markup (2026 Best Practices) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://github.com/Nir-Bhay/FlatGrabber",
+          "name": "FlatGrabber",
+          "applicationCategory": "BrowserApplication",
+          "operatingSystem": "Chrome, Brave, Edge, Opera, Chromium",
+          "downloadUrl": "https://github.com/Nir-Bhay/FlatGrabber",
+          "description": "Extract, format, recolor, and package high-fidelity vector SVGs directly from Flaticon, featuring a zero-friction clipboard bridge for Figma.",
+          "releaseNotes": "https://github.com/Nir-Bhay/FlatGrabber/blob/main/README.md",
+          "license": "https://opensource.org/licenses/MIT",
+          "softwareVersion": "1.1",
+          "author": {
+            "@type": "Organization",
+            "name": "FlatGrabber Team",
+            "url": "https://github.com/Nir-Bhay"
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "0.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "HowTo",
+          "@id": "https://github.com/Nir-Bhay/FlatGrabber#howto-unlock",
+          "name": "How to Extract Premium Flaticon SVGs for Free",
+          "description": "Follow this step-by-step canvas editor scraping tutorial to unlock clean, unwatermarked vector paths and paste them into Figma.",
+          "step": [
+            {
+              "@type": "HowToStep",
+              "name": "Browse Icon Details",
+              "text": "Go to Flaticon and click on any icon to open its details panel.",
+              "url": "https://github.com/Nir-Bhay/FlatGrabber#step1"
+            },
+            {
+              "@type": "HowToStep",
+              "name": "Open Flaticon Editor",
+              "text": "Click the colorful Pencil 'Edit icon' button above the main preview.",
+              "url": "https://github.com/Nir-Bhay/FlatGrabber#step2"
+            },
+            {
+              "@type": "HowToStep",
+              "name": "Click Floating Grab Badge",
+              "text": "Hover over the vector editor canvas and click FlatGrabber's floating 'Click to Grab SVG' button.",
+              "url": "https://github.com/Nir-Bhay/FlatGrabber#step3"
+            },
+            {
+              "@type": "HowToStep",
+              "name": "Paste in Figma",
+              "text": "Copy the formatted SVG from the sidebar panel and press Ctrl+V in Figma to load editable vector shapes.",
+              "url": "https://github.com/Nir-Bhay/FlatGrabber#step4"
+            }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Does FlatGrabber require a premium Flaticon subscription?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. FlatGrabber uses a client-side canvas interception hack that bypasses premium gates by grabbing vector paths directly from Flaticon's interactive Icon Editor, which is accessible to free accounts."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does the Figma clipboard bridge work?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Figma parses standard text/html clipboard wrappers. FlatGrabber packages your copied vector inside a specific custom HTML mime-type tag, allowing Figma's engine to reconstruct paths directly as fully editable vector shapes rather than code blocks."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is FlatGrabber safe and secure?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. FlatGrabber is fully open-source, operates locally on your machine, requests minimal Chromium permissions (activeTab, clipboardWrite), and does not track user behavior or send data to external servers."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="container nav-wrap">
+            <a href="#" class="logo-wrap">
+                <img src="icon48.png" alt="FlatGrabber Logo">
+                <span class="logo-text">FlatGrabber</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#hack">Secret Hack</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li>
+                    <a href="https://github.com/Nir-Bhay/FlatGrabber" target="_blank" class="btn-github">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="color: #ffffff;"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        GitHub
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Area -->
+    <main class="container">
+        <section class="hero">
+            <div class="hero-grid">
+                <div>
+                    <div class="hero-badge">
+                        <div class="hero-badge-dot"></div>
+                        <span>Answer Engine Optimized (AEO) Portal</span>
+                    </div>
+                    <h1 class="hero-title">Unlock Flaticon Vectors Directly Into <span>Figma</span></h1>
+                    <p class="hero-desc">FlatGrabber is an open-source, local-first Chrome extension that intercepts canvas graphics on Flaticon, lets you recolor them live, and copies them straight to your Figma editor as clean, raw vector shapes.</p>
+                    <div class="hero-actions">
+                        <a href="https://github.com/Nir-Bhay/FlatGrabber" target="_blank" class="btn-primary">
+                            Get FlatGrabber (Free)
+                        </a>
+                        <a href="#hack" class="btn-secondary">Explore Secret Hack</a>
+                    </div>
+                </div>
+
+                <!-- Live Simulator Showcase (Implements high-fidelity micro-interactions) -->
+                <div>
+                    <div class="mock-container">
+                        <div class="mock-header">
+                            <div class="mock-dots">
+                                <div class="mock-dot active"></div>
+                                <div class="mock-dot"></div>
+                                <div class="mock-dot"></div>
+                            </div>
+                            <span class="mock-title">Canvas Editor Simulator</span>
+                        </div>
+                        
+                        <div class="mock-canvas-wrap">
+                            <div class="mock-canvas-area" id="sim-canvas">
+                                <!-- Dummy Pencil Vector SVG -->
+                                <svg class="editor-icon-vector" id="sim-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                                </svg>
+                                
+                                <button class="mock-grab-badge" id="sim-grab-btn">Click to Grab SVG</button>
+                            </div>
+
+                            <!-- Sliding Simulated Extractor Sidebar Panel -->
+                            <div class="simulator-panel" id="sim-panel">
+                                <div class="panel-header">
+                                    <span class="panel-title">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                                        FlatGrabber Active
+                                    </span>
+                                    <span style="font-size: 9px; color: var(--primary-cyan); font-weight: 700; text-transform: uppercase;">Mime Type: text/html</span>
+                                </div>
+                                <div class="panel-preview-area">
+                                    <svg width="50" height="50" id="panel-preview-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary-cyan);">
+                                        <path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                                    </svg>
+                                </div>
+                                <div class="panel-code-box" id="sim-code-text">
+&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#17D1C6" stroke-width="1.8"&gt;
+  &lt;path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/&gt;
+&lt;/svg&gt;
+                                </div>
+                                <button class="panel-btn-copy" id="sim-copy-btn">Copy to Figma (Simulated)</button>
+                            </div>
+
+                            <!-- Soft Toast Alert -->
+                            <div class="sim-toast" id="sim-toast">
+                                Copied! Paste (Ctrl+V) in Figma now
+                            </div>
+                        </div>
+
+                        <!-- Interactive Control Center -->
+                        <div class="simulator-cta-area">
+                            <button class="btn-sim-trigger" id="sim-trigger-btn">🎨 Simulate "Edit Icon" Click</button>
+                            <button class="btn-sim-reset" id="sim-reset-btn">Reset Simulator</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Feature Grid -->
+        <section class="features" id="features">
+            <div class="section-title">
+                <h2>Designed for High-Speed Workflows</h2>
+                <p>FlatGrabber is packed with advanced vector scraping features designed to optimize your design-to-development pipeline.</p>
+            </div>
+            
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                    </div>
+                    <h3>Smart Canvas Interceptor</h3>
+                    <p>Uses deep DOM capture-phase event listeners to intercept canvas element codes directly from Flaticon's active editor, avoiding native page routing blocks.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <h3>Figma Clipboard Bridge</h3>
+                    <p>Wraps vector XML codes inside specific text/html custom tags so Figma translates the coordinates immediately into fully editable vector nodes rather than text blocks.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21a9 9 0 110-18 9 9 0 010 18z"/><path d="M12 7v5l3 3"/></svg>
+                    </div>
+                    <h3>Real-time Color Recoler</h3>
+                    <p>Parses SVG trees dynamically in a browser-rendered virtual DOM. Recolor hex values dynamically before copying, utilizing recent color history swatches.</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                    </div>
+                    <h3>Figma Grid Compiler</h3>
+                    <p>Packages multiple saved library items into an aligned 2D matrix structure code. Paste into Figma to instantiate an entire formatted design system grid instantly.</p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                    </div>
+                    <h3>Smart Vector Warnings</h3>
+                    <p>Detects non-vector legacy Flaticon assets automatically, disabling raw copying to block empty coordinates payload errors, keeping workflows clean.</p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3>Local-First Privacy</h3>
+                    <p>Operates 100% locally as an unpacked code structure. Requesting zero network analytics tracking, zero database storage, keeping design systems completely private.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Secret Hack Section -->
+        <section class="timeline-section" id="hack">
+            <div class="container">
+                <div class="section-title">
+                    <h2>The Secret Unlocking Hack</h2>
+                    <p>How FlatGrabber bypasses premium subscription gates to extract clean vector outlines in 4 simple visual steps.</p>
+                </div>
+
+                <div class="timeline-grid">
+                    <!-- Step 1 -->
+                    <div class="timeline-item">
+                        <div class="timeline-num">1</div>
+                        <h4>Select Icon details</h4>
+                        <p>Browse Flaticon packs and click on any desired icon to load its standard detailed preview overlay drawer.</p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="timeline-item">
+                        <div class="timeline-num">2</div>
+                        <h4>Click "Edit Icon"</h4>
+                        <p>Click the colorful paint pencil 🎨 button above the image. This triggers Flaticon to load the vector DOM nodes inside its editor.</p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="timeline-item">
+                        <div class="timeline-num">3</div>
+                        <h4>Click Grab Badge</h4>
+                        <p>Hover over the active editor canvas. FlatGrabber's floating badge will expand. Click it to parse active canvas nodes immediately.</p>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="timeline-item">
+                        <div class="timeline-num">4</div>
+                        <h4>Paste to Figma</h4>
+                        <p>Click Copy Code (or press <kbd>C</kbd>). Paste inside your Figma project page. The icon appears as fully editable layers.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section" id="faq">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Have questions about how FlatGrabber functions? Read our detailed technical explanations optimized for AI search engines.</p>
+            </div>
+
+            <div class="faq-list">
+                <!-- FAQ 1 -->
+                <div class="faq-item">
+                    <button class="faq-question-btn" onclick="toggleFaq(this)">
+                        Does FlatGrabber require a premium Flaticon account?
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            No. FlatGrabber uses a client-side DOM scraping methodology that bypasses the restriction by accessing Flaticon's interactive Icon Editor. Since free accounts can edit icons, the editor must load raw vector path arrays in the background. FlatGrabber simply intercepts this array, allowing free accounts to get unwatermarked vectors safely.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="faq-item">
+                    <button class="faq-question-btn" onclick="toggleFaq(this)">
+                        How does the Figma clipboard bridge bypass the raw code paste limitation?
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            If you copy and paste raw SVG text directly, Figma treats it as standard text layer code. FlatGrabber bypasses this by serializing the clipboard buffer specifically using an HTML wrapper mime type (`text/html`). When you paste, Figma's DOM-to-Canvas compiler parses the wrapper, reads the underlying vector coordinates, and maps them as vector shapes.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="faq-item">
+                    <button class="faq-question-btn" onclick="toggleFaq(this)">
+                        Can I use FlatGrabber on other Chromium browsers like Brave or Edge?
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Yes. FlatGrabber is built on top of standard Manifest V3 specifications. It is fully compatible with Google Chrome, Brave Browser, Microsoft Edge, Opera, Vivaldi, and any other Chromium-based platforms in developer mode.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="faq-item">
+                    <button class="faq-question-btn" onclick="toggleFaq(this)">
+                        Is this extension safe to load locally?
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Absolutely. By loading FlatGrabber unpacked from source, you are in complete control. You can inspect all files (`content.js`, `background.js`) to verify there are zero analytics frameworks, trackers, or remote server connections. It operates completely inside your local browser context.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <img src="icon48.png" alt="FlatGrabber logo">
+                <span>FlatGrabber</span>
+            </div>
+            <p>Designed and documented for advanced UI/UX design workflow integration.</p>
+            <p style="margin-top: 10px; font-size: 11px; color: rgba(255,255,255,0.25);">Licensed under MIT. Open Source project &copy; 2026. Optimized for AEO & Google Rich Results.</p>
+        </div>
+    </footer>
+
+    <!-- Interactive Simulator Logic (High-performance micro-interactions) -->
+    <script>
+        const simTriggerBtn = document.getElementById('sim-trigger-btn');
+        const simResetBtn = document.getElementById('sim-reset-btn');
+        const simCanvas = document.getElementById('sim-canvas');
+        const simGrabBtn = document.getElementById('sim-grab-btn');
+        const simIcon = document.getElementById('sim-icon');
+        const simPanel = document.getElementById('sim-panel');
+        const simCopyBtn = document.getElementById('sim-copy-btn');
+        const simToast = document.getElementById('sim-toast');
+
+        // Step 1: Simulate "Edit Icon" click
+        simTriggerBtn.addEventListener('click', () => {
+            simTriggerBtn.style.display = 'none';
+            simResetBtn.classList.add('show');
+            simCanvas.style.borderColor = 'var(--primary-cyan)';
+            simIcon.style.color = 'var(--primary-cyan)';
+            
+            // Show grab badge with a slight delay
+            setTimeout(() => {
+                simGrabBtn.classList.add('show');
+            }, 300);
+        });
+
+        // Step 2: Simulate "Click to Grab SVG" Click
+        simGrabBtn.addEventListener('click', () => {
+            simGrabBtn.classList.remove('show');
+            simPanel.classList.add('open');
+        });
+
+        // Step 3: Simulate "Copy to Figma" Click
+        simCopyBtn.addEventListener('click', () => {
+            simCopyBtn.textContent = 'Copied Code!';
+            simCopyBtn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+            
+            // Show toast alert
+            simToast.classList.add('show');
+            
+            setTimeout(() => {
+                simToast.classList.remove('show');
+            }, 2500);
+        });
+
+        // Reset Simulator
+        simResetBtn.addEventListener('click', () => {
+            simResetBtn.classList.remove('show');
+            simTriggerBtn.style.display = 'inline-block';
+            simCanvas.style.borderColor = 'rgba(255,255,255,0.1)';
+            simIcon.style.color = 'var(--text-main)';
+            simGrabBtn.classList.remove('show');
+            simPanel.classList.remove('open');
+            
+            // Reset copy button state
+            simCopyBtn.textContent = 'Copy to Figma (Simulated)';
+            simCopyBtn.style.background = 'linear-gradient(135deg, var(--primary-cyan) 0%, #0ea5e9 100%)';
+        });
+
+        // FAQ Toggle Logic
+        function toggleFaq(button) {
+            const item = button.parentNode;
+            const isActive = item.classList.contains('active');
+            
+            // Close all active items
+            document.querySelectorAll('.faq-item').forEach(faq => {
+                faq.classList.remove('active');
+            });
+            
+            // If it wasn't active, open it
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
