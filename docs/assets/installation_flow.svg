@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 240" width="100%" height="auto">
+  <defs>
+    <linearGradient id="cyan-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#17D1C6" />
+      <stop offset="100%" stop-color="#0ea5e9" />
+    </linearGradient>
+    <linearGradient id="dark-card" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#151722" />
+      <stop offset="100%" stop-color="#0d0f15" />
+    </linearGradient>
+    <filter id="glow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#17D1C6" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <!-- Background -->
+  <rect width="900" height="240" rx="16" fill="#08090d" stroke="rgba(255,255,255,0.05)" stroke-width="1" />
+  
+  <!-- Step 1 -->
+  <g transform="translate(30, 30)">
+    <rect width="140" height="180" rx="12" fill="url(#dark-card)" stroke="rgba(255,255,255,0.06)" stroke-width="1.5" />
+    <circle cx="70" cy="50" r="24" fill="rgba(23, 209, 198, 0.1)" stroke="url(#cyan-blue)" stroke-width="1.5" />
+    <path d="M62 48l8 8 8-8M70 38v18" fill="none" stroke="#17D1C6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="70" y="110" font-family="-apple-system, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">1. Get Code</text>
+    <text x="70" y="132" font-family="-apple-system, sans-serif" font-size="10.5" fill="#8f9bb3" text-anchor="middle">Clone repository</text>
+    <text x="70" y="148" font-family="-apple-system, sans-serif" font-size="10.5" fill="#8f9bb3" text-anchor="middle">or download ZIP</text>
+  </g>
+
+  <!-- Arrow 1 -->
+  <path d="M185 120h20m0 0l-6-6m6 6l-6 6" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2" stroke-linecap="round" />
+
+  <!-- Step 2 -->
+  <g transform="translate(200, 30)">
+    <rect width="140" height="180" rx="12" fill="url(#dark-card)" stroke="rgba(255,255,255,0.06)" stroke-width="1.5" />
+    <circle cx="70" cy="50" r="24" fill="rgba(23, 209, 198, 0.1)" stroke="url(#cyan-blue)" stroke-width="1.5" />
+    <rect x="58" y="44" width="24" height="14" rx="2" fill="none" stroke="#17D1C6" stroke-width="2" />
+    <path d="M60 48h20M66 50v4M74 50v4" fill="none" stroke="#17D1C6" stroke-width="2" stroke-linecap="round" />
+    <text x="70" y="110" font-family="-apple-system, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">2. Open Chrome</text>
+    <text x="70" y="132" font-family="-apple-system, sans-serif" font-size="10.5" fill="#8f9bb3" text-anchor="middle">Navigate to</text>
+    <text x="70" y="148" font-family="-apple-system, sans-serif" font-size="10" font-weight="600" fill="#17D1C6" text-anchor="middle">chrome://extensions</text>
+  </g>
+
+  <!-- Arrow 2 -->
+  <path d="M355 120h20m0 0l-6-6m6 6l-6 6" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2" stroke-linecap="round" />
+
+  <!-- Step 3 -->
+  <g transform="translate(370, 30)">
+    <rect width="140" height="180" rx="12" fill="url(#dark-card)" stroke="rgba(255,255,255,0.06)" stroke-width="1.5" />
+    <circle cx="70" cy="50" r="24" fill="rgba(23, 209, 198, 0.1)" stroke="url(#cyan-blue)" stroke-width="1.5" />
+    <rect x="56" y="43" width="28" height="14" rx="7" fill="rgba(255,255,255,0.1)" stroke="#17D1C6" stroke-width="2" />
+    <circle cx="73" cy="50" r="4" fill="#17D1C6" />
+    <text x="70" y="110" font-family="-apple-system, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">3. Dev Mode</text>
+    <text x="70" y="132" font-family="-apple-system, sans-serif" font-size="10.5" fill="#8f9bb3" text-anchor="middle">Toggle Developer</text>
+    <text x="70" y="148" font-family="-apple-system, sans-serif" font-size="10.5" fill="#8f9bb3" text-anchor="middle">Mode switch ON</text>
+  </g>
+
+  <!-- Arrow 3 -->
+  <path d="M525 120h20m0 0l-6-6m6 6l-6 6" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2" stroke-linecap="round" />
+
+  <!-- Step 4 -->
+  <g transform="translate(540, 30)">
+    <rect width="140" height="180" rx="12" fill="url(#dark-card)" stroke="rgba(255,255,255,0.06)" stroke-width="1.5" />
+    <circle cx="70" cy="50" r="24" fill="rgba(23, 209, 198, 0.1)" stroke="url(#cyan-blue)" stroke-width="1.5" />
+    <path d="M60 44h20v14H60zm4 0v-3h12v3" fill="none" stroke="#17D1C6" stroke-width="2.5" stroke-linecap="round" />
+    <circle cx="70" cy="51" r="2.5" fill="#17D1C6" />
+    <text x="70" y="110" font-family="-apple-system, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">4. Load Unpacked</text>
+    <text x="70" y="132" font-family="-apple-system, sans-serif" font-size="10.5" fill="#8f9bb3" text-anchor="middle">Select extracted</text>
+    <text x="70" y="148" font-family="-apple-system, sans-serif" font-size="10.5" fill="#8f9bb3" text-anchor="middle">project folder</text>
+  </g>
+
+  <!-- Arrow 4 -->
+  <path d="M695 120h20m0 0l-6-6m6 6l-6 6" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2" stroke-linecap="round" />
+
+  <!-- Step 5 -->
+  <g transform="translate(710, 30)" filter="url(#glow)">
+    <rect width="140" height="180" rx="12" fill="url(#dark-card)" stroke="#17D1C6" stroke-width="1.5" />
+    <circle cx="70" cy="50" r="24" fill="rgba(23, 209, 198, 0.2)" stroke="url(#cyan-blue)" stroke-width="2" />
+    <path d="M64 42v10l6-4 6 4V42z" fill="#17D1C6" stroke="#17D1C6" stroke-width="1" />
+    <text x="70" y="110" font-family="-apple-system, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">5. Pin App</text>
+    <text x="70" y="132" font-family="-apple-system, sans-serif" font-size="10.5" fill="#8f9bb3" text-anchor="middle">Pin FlatGrabber</text>
+    <text x="70" y="148" font-family="-apple-system, sans-serif" font-size="10.5" fill="#8f9bb3" text-anchor="middle">to Chrome bar</text>
+  </g>
+</svg>

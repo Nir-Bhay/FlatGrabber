@@ -59,23 +59,19 @@ sequenceDiagram
 
 To extract clean, unwatermarked vectors for **any** vector-compatible icon, follow this simple procedure:
 
-1.  **Open Details:** Click on any icon to open its standard detail page.
-2.  **Click "Edit icon":** Click the colorful **🎨 Edit icon** pencil button above the main preview image.
-3.  **Grab from Editor:** Once the canvas editor loads, hover over the icon and click the floating **"Click to Grab SVG"** badge.
-4.  **Vector Unlocked:** FlatGrabber instantly intercepts the editor's active canvas data and extracts the raw vector paths! The **SVG Code** tab will light up, ready for copy-pasting.
+![Unlocking Hack Flow](docs/assets/unlocking_hack_flow.svg)
+
+For a fully comprehensive, visual tutorial on utilizing all features (Dynamic Recoloring, Figma Grid compiler, Bulk ZIP downloader), read the **[🎨 Comprehensive User Guide (GUIDE.md)](GUIDE.md)**.
 
 ---
 
 ## 🛠️ Installation Guide
 
-Follow these steps to load FlatGrabber locally in developer mode:
+Follow these simple steps to load FlatGrabber locally in developer mode:
 
-1.  **Download or Clone:** Clone this repository or download the ZIP file and extract it to a directory on your machine (e.g., `flat-grabber`).
-2.  **Open Chrome Extensions:** In Google Chrome, navigate to `chrome://extensions/`.
-3.  **Enable Developer Mode:** Toggle the **Developer mode** switch in the top-right corner.
-4.  **Load Unpacked:** Click **Load unpacked** in the top-left corner.
-5.  **Select Directory:** Choose the folder containing the extension's files (where the `manifest.json` is located).
-6.  **Pin for Quick Access:** Pin the extension from your Chrome toolbar to begin grabbing.
+![Installation Flow](docs/assets/installation_flow.svg)
+
+For advanced environment configuration, runtime verification, updating guidelines, and console debugging steps, read the **[🛠️ Comprehensive Setup Guide (INSTALL.md)](INSTALL.md)**.
 
 ---
 

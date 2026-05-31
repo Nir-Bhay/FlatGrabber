@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 240" width="100%" height="auto">
+  <defs>
+    <linearGradient id="purple-pink" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a855f7" />
+      <stop offset="100%" stop-color="#ec4899" />
+    </linearGradient>
+    <linearGradient id="dark-card" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#151722" />
+      <stop offset="100%" stop-color="#0d0f15" />
+    </linearGradient>
+    <filter id="purple-glow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#a855f7" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  <!-- Background -->
+  <rect width="800" height="240" rx="16" fill="#08090d" stroke="rgba(255,255,255,0.05)" stroke-width="1" />
+
+  <!-- Step 1 -->
+  <g transform="translate(30, 30)">
+    <rect width="150" height="180" rx="12" fill="url(#dark-card)" stroke="rgba(255,255,255,0.06)" stroke-width="1.5" />
+    <circle cx="75" cy="50" r="24" fill="rgba(168, 85, 247, 0.1)" stroke="url(#purple-pink)" stroke-width="1.5" />
+    <path d="M71 45h8v10h-8zM65 42h20M67 55h16" fill="none" stroke="#a855f7" stroke-width="2" stroke-linecap="round" />
+    <circle cx="75" cy="47" r="1.5" fill="#a855f7" />
+    <text x="75" y="110" font-family="-apple-system, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">1. Browse &amp; Select</text>
+    <text x="75" y="132" font-family="-apple-system, sans-serif" font-size="10.5" fill="#8f9bb3" text-anchor="middle">Click any Flaticon</text>
+    <text x="75" y="148" font-family="-apple-system, sans-serif" font-size="10.5" fill="#8f9bb3" text-anchor="middle">icon to open details</text>
+  </g>
+
+  <!-- Arrow 1 -->
+  <path d="M200 120h20m0 0l-6-6m6 6l-6 6" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2" stroke-linecap="round" />
+
+  <!-- Step 2 -->
+  <g transform="translate(220, 30)">
+    <rect width="150" height="180" rx="12" fill="url(#dark-card)" stroke="rgba(255,255,255,0.06)" stroke-width="1.5" />
+    <circle cx="75" cy="50" r="24" fill="rgba(168, 85, 247, 0.1)" stroke="url(#purple-pink)" stroke-width="1.5" />
+    <path d="M66 56l14-14 4 4-14 14zM78 40l6 6" fill="none" stroke="#a855f7" stroke-width="2" stroke-linecap="round" />
+    <text x="75" y="110" font-family="-apple-system, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">2. The Pencil Hack</text>
+    <text x="75" y="132" font-family="-apple-system, sans-serif" font-size="10.5" fill="#8f9bb3" text-anchor="middle">Click colorful</text>
+    <text x="75" y="148" font-family="-apple-system, sans-serif" font-size="10.5" fill="#a855f7" font-weight="600" text-anchor="middle">"🎨 Edit Icon"</text>
+  </g>
+
+  <!-- Arrow 2 -->
+  <path d="M390 120h20m0 0l-6-6m6 6l-6 6" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2" stroke-linecap="round" />
+
+  <!-- Step 3 -->
+  <g transform="translate(410, 30)">
+    <rect width="150" height="180" rx="12" fill="url(#dark-card)" stroke="rgba(255,255,255,0.06)" stroke-width="1.5" />
+    <circle cx="75" cy="50" r="24" fill="rgba(168, 85, 247, 0.1)" stroke="url(#purple-pink)" stroke-width="1.5" />
+    <circle cx="75" cy="50" r="14" fill="none" stroke="#a855f7" stroke-width="2" />
+    <path d="M75 42v16M67 50h16" fill="none" stroke="#a855f7" stroke-width="2" />
+    <text x="75" y="110" font-family="-apple-system, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">3. Click to Grab</text>
+    <text x="75" y="132" font-family="-apple-system, sans-serif" font-size="10.5" fill="#8f9bb3" text-anchor="middle">Hover vector editor &amp;</text>
+    <text x="75" y="148" font-family="-apple-system, sans-serif" font-size="10.5" fill="#8f9bb3" text-anchor="middle">click floating badge</text>
+  </g>
+
+  <!-- Arrow 3 -->
+  <path d="M580 120h20m0 0l-6-6m6 6l-6 6" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2" stroke-linecap="round" />
+
+  <!-- Step 4 -->
+  <g transform="translate(600, 30)" filter="url(#purple-glow)">
+    <rect width="150" height="180" rx="12" fill="url(#dark-card)" stroke="#a855f7" stroke-width="1.5" />
+    <circle cx="75" cy="50" r="24" fill="rgba(168, 85, 247, 0.2)" stroke="url(#purple-pink)" stroke-width="2" />
+    <path d="M64 45l8-4 8 4M64 55l8 4 8-4M72 41v18" fill="none" stroke="#a855f7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="75" y="110" font-family="-apple-system, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">4. Figma Unlocked</text>
+    <text x="75" y="132" font-family="-apple-system, sans-serif" font-size="10.5" fill="#8f9bb3" text-anchor="middle">Copy vector and</text>
+    <text x="75" y="148" font-family="-apple-system, sans-serif" font-size="10.5" fill="#a855f7" font-weight="600" text-anchor="middle">Paste to Figma</text>
+  </g>
+</svg>
