@@ -31,7 +31,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
 
-    <!-- Premium CSS Layout & Design System -->
+    <!-- Global CSS Link -->
     <link rel="stylesheet" href="landing.css">
 
     <!-- Google Stacked JSON-LD Structured Data Schema Markup (2026 Best Practices) -->
@@ -136,12 +136,15 @@
                 <span class="logo-text">FlatGrabber</span>
             </a>
             <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="#features">Features</a></li>
                 <li><a href="#hack">Secret Hack</a></li>
-                <li><a href="#faq">FAQ</a></li>
+                <li><a href="docs.html">Documentation</a></li>
+                <li><a href="changelog.html">Changelog</a></li>
+                <li><a href="privacy.html">Privacy</a></li>
                 <li>
                     <a href="https://github.com/Nir-Bhay/FlatGrabber" target="_blank" class="btn-github">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="color: #ffffff;"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="color: #171717;"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
                         GitHub
                     </a>
                 </li>
@@ -149,251 +152,255 @@
         </div>
     </header>
 
-    <!-- Hero Area -->
-    <main class="container">
-        <section class="hero">
-            <div class="hero-grid">
-                <div>
-                    <div class="hero-badge">
-                        <div class="hero-badge-dot"></div>
-                        <span>Answer Engine Optimized (AEO) Portal</span>
-                    </div>
-                    <h1 class="hero-title">Unlock Flaticon Vectors Directly Into <span>Figma</span></h1>
-                    <p class="hero-desc">FlatGrabber is an open-source, local-first Chrome extension that intercepts canvas graphics on Flaticon, lets you recolor them live, and copies them straight to your Figma editor as clean, raw vector shapes.</p>
-                    <div class="hero-actions">
-                        <a href="https://github.com/Nir-Bhay/FlatGrabber" target="_blank" class="btn-primary">
-                            Get FlatGrabber (Free)
-                        </a>
-                        <a href="#hack" class="btn-secondary">Explore Secret Hack</a>
-                    </div>
-                </div>
-
-                <!-- Live Simulator Showcase (Implements high-fidelity micro-interactions) -->
-                <div>
-                    <div class="mock-container">
-                        <div class="mock-header">
-                            <div class="mock-dots">
-                                <div class="mock-dot active"></div>
-                                <div class="mock-dot"></div>
-                                <div class="mock-dot"></div>
-                            </div>
-                            <span class="mock-title">Canvas Editor Simulator</span>
+    <!-- Hero Area with Vercel Atmospheric mesh gradient -->
+    <div class="hero-mesh-wrapper">
+        <div class="hero-mesh-bg"></div>
+        
+        <main class="container hero-content">
+            <section class="hero">
+                <div class="hero-grid">
+                    <div>
+                        <div class="hero-badge">
+                            <div class="hero-badge-dot"></div>
+                            <span>flatgrabber: alpha-release</span>
                         </div>
-                        
-                        <div class="mock-canvas-wrap">
-                            <div class="mock-canvas-area" id="sim-canvas">
-                                <!-- Dummy Pencil Vector SVG -->
-                                <svg class="editor-icon-vector" id="sim-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
-                                </svg>
-                                
-                                <button class="mock-grab-badge" id="sim-grab-btn">Click to Grab SVG</button>
-                            </div>
+                        <h1 class="hero-title">Unlock Flaticon vectors directly into <span>Figma.</span></h1>
+                        <p class="hero-desc">A premium, developer-focused Chrome extension engineered to inspect, recolor, and extract high-fidelity SVGs from Flaticon into Figma as fully editable vector shapes.</p>
+                        <div class="hero-actions">
+                            <a href="https://github.com/Nir-Bhay/FlatGrabber" target="_blank" class="btn-primary">
+                                Get FlatGrabber
+                            </a>
+                            <a href="#hack" class="btn-secondary">Explore Secret Hack</a>
+                        </div>
+                    </div>
 
-                            <!-- Sliding Simulated Extractor Sidebar Panel -->
-                            <div class="simulator-panel" id="sim-panel">
-                                <div class="panel-header">
-                                    <span class="panel-title">
-                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                                        FlatGrabber Active
-                                    </span>
-                                    <span style="font-size: 9px; color: var(--primary-cyan); font-weight: 700; text-transform: uppercase;">Mime Type: text/html</span>
+                    <!-- Live Simulator Showcase -->
+                    <div>
+                        <div class="mock-container">
+                            <div class="mock-header">
+                                <div class="mock-dots">
+                                    <div class="mock-dot active"></div>
+                                    <div class="mock-dot"></div>
+                                    <div class="mock-dot"></div>
                                 </div>
-                                <div class="panel-preview-area">
-                                    <svg width="50" height="50" id="panel-preview-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary-cyan);">
+                                <span class="mock-title">Canvas Editor Simulator</span>
+                            </div>
+                            
+                            <div class="mock-canvas-wrap">
+                                <div class="mock-canvas-area" id="sim-canvas">
+                                    <!-- Dummy Pencil Vector SVG -->
+                                    <svg class="editor-icon-vector" id="sim-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
                                     </svg>
+                                    
+                                    <button class="mock-grab-badge" id="sim-grab-btn">Click to Grab SVG</button>
                                 </div>
-                                <div class="panel-code-box" id="sim-code-text">
-&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#17D1C6" stroke-width="1.8"&gt;
+
+                                <!-- Sliding Simulated Extractor Sidebar Panel -->
+                                <div class="simulator-panel" id="sim-panel">
+                                    <div class="panel-header">
+                                        <span class="panel-title">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                                            FlatGrabber Active
+                                        </span>
+                                        <span style="font-size: 9px; color: var(--primary-indigo); font-weight: 700; text-transform: uppercase;">Mime: text/html</span>
+                                    </div>
+                                    <div class="panel-preview-area">
+                                        <svg width="50" height="50" id="panel-preview-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary-indigo);">
+                                            <path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="panel-code-box" id="sim-code-text">
+&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#171717" stroke-width="1.8"&gt;
   &lt;path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/&gt;
 &lt;/svg&gt;
+                                    </div>
+                                    <button class="panel-btn-copy" id="sim-copy-btn">Copy to Figma (Simulated)</button>
                                 </div>
-                                <button class="panel-btn-copy" id="sim-copy-btn">Copy to Figma (Simulated)</button>
+
+                                <!-- Soft Toast Alert -->
+                                <div class="sim-toast" id="sim-toast">
+                                    Copied! Paste (Ctrl+V) in Figma now
+                                </div>
                             </div>
 
-                            <!-- Soft Toast Alert -->
-                            <div class="sim-toast" id="sim-toast">
-                                Copied! Paste (Ctrl+V) in Figma now
+                            <!-- Interactive Control Center -->
+                            <div class="simulator-cta-area">
+                                <button class="btn-sim-trigger" id="sim-trigger-btn">🎨 Simulate "Edit Icon" Click</button>
+                                <button class="btn-sim-reset" id="sim-reset-btn">Reset Simulator</button>
                             </div>
-                        </div>
-
-                        <!-- Interactive Control Center -->
-                        <div class="simulator-cta-area">
-                            <button class="btn-sim-trigger" id="sim-trigger-btn">🎨 Simulate "Edit Icon" Click</button>
-                            <button class="btn-sim-reset" id="sim-reset-btn">Reset Simulator</button>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Core Feature Grid -->
-        <section class="features" id="features">
-            <div class="section-title">
-                <h2>Designed for High-Speed Workflows</h2>
-                <p>FlatGrabber is packed with advanced vector scraping features designed to optimize your design-to-development pipeline.</p>
-            </div>
-            
-            <div class="features-grid">
-                <!-- Feature 1 -->
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
-                    </div>
-                    <h3>Smart Canvas Interceptor</h3>
-                    <p>Uses deep DOM capture-phase event listeners to intercept canvas element codes directly from Flaticon's active editor, avoiding native page routing blocks.</p>
+            <!-- Core Feature Grid -->
+            <section class="features" id="features">
+                <div class="section-title">
+                    <h2>Designed for high-speed workflows.</h2>
+                    <p>FlatGrabber is packed with advanced vector scraping features designed to optimize your design-to-development pipeline.</p>
                 </div>
                 
-                <!-- Feature 2 -->
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                <div class="features-grid">
+                    <!-- Feature 1 -->
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                        </div>
+                        <h3>Smart Canvas Interceptor</h3>
+                        <p>Uses deep DOM capture-phase event listeners to intercept canvas elements directly from Flaticon's active editor, bypassing native page routing blocks.</p>
                     </div>
-                    <h3>Figma Clipboard Bridge</h3>
-                    <p>Wraps vector XML codes inside specific text/html custom tags so Figma translates the coordinates immediately into fully editable vector nodes rather than text blocks.</p>
-                </div>
-
-                <!-- Feature 3 -->
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21a9 9 0 110-18 9 9 0 010 18z"/><path d="M12 7v5l3 3"/></svg>
+                    
+                    <!-- Feature 2 -->
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                        </div>
+                        <h3>Figma Clipboard Bridge</h3>
+                        <p>Wraps vector XML codes inside specific text/html custom tags so Figma translates the coordinates immediately into fully editable vector nodes rather than code text blocks.</p>
                     </div>
-                    <h3>Real-time Color Recoler</h3>
-                    <p>Parses SVG trees dynamically in a browser-rendered virtual DOM. Recolor hex values dynamically before copying, utilizing recent color history swatches.</p>
-                </div>
 
-                <!-- Feature 4 -->
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                    <!-- Feature 3 -->
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21a9 9 0 110-18 9 9 0 010 18z"/><path d="M12 7v5l3 3"/></svg>
+                        </div>
+                        <h3>Real-time Color Recolor</h3>
+                        <p>Parses SVG trees dynamically in a browser-rendered virtual DOM. Recolor hex values dynamically before copying, utilizing recent color history swatches.</p>
                     </div>
-                    <h3>Figma Grid Compiler</h3>
-                    <p>Packages multiple saved library items into an aligned 2D matrix structure code. Paste into Figma to instantiate an entire formatted design system grid instantly.</p>
-                </div>
 
-                <!-- Feature 5 -->
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                    <!-- Feature 4 -->
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                        </div>
+                        <h3>Figma Grid Compiler</h3>
+                        <p>Packages multiple saved library items into an aligned 2D matrix structure code. Paste into Figma to instantiate an entire formatted design system grid instantly.</p>
                     </div>
-                    <h3>Smart Vector Warnings</h3>
-                    <p>Detects non-vector legacy Flaticon assets automatically, disabling raw copying to block empty coordinates payload errors, keeping workflows clean.</p>
-                </div>
 
-                <!-- Feature 6 -->
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    <!-- Feature 5 -->
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                        </div>
+                        <h3>Smart Vector Warnings</h3>
+                        <p>Detects non-vector legacy Flaticon assets automatically, disabling raw copying to block empty coordinates payload errors, keeping workflows clean.</p>
                     </div>
-                    <h3>Local-First Privacy</h3>
-                    <p>Operates 100% locally as an unpacked code structure. Requesting zero network analytics tracking, zero database storage, keeping design systems completely private.</p>
-                </div>
-            </div>
-        </section>
 
-        <!-- Secret Hack Section -->
-        <section class="timeline-section" id="hack">
-            <div class="container">
+                    <!-- Feature 6 -->
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                        <h3>Local-First Privacy</h3>
+                        <p>Operates 100% locally as an unpacked code structure. Requesting zero network analytics tracking, zero database storage, keeping design systems completely private.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Secret Hack Section -->
+            <section class="timeline-section" id="hack">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>The Secret Unlocking Hack</h2>
+                        <p>How FlatGrabber bypasses premium subscription gates to extract clean vector outlines in 4 simple steps.</p>
+                    </div>
+
+                    <div class="timeline-grid">
+                        <!-- Step 1 -->
+                        <div class="timeline-item">
+                            <div class="timeline-num">1</div>
+                            <h4>Select Icon details</h4>
+                            <p>Browse Flaticon packs and click on any desired icon to load its standard detailed preview overlay drawer.</p>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="timeline-item">
+                            <div class="timeline-num">2</div>
+                            <h4>Click "Edit Icon"</h4>
+                            <p>Click the colorful paint pencil 🎨 button above the image. This triggers Flaticon to load the vector DOM nodes inside its editor.</p>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="timeline-item">
+                            <div class="timeline-num">3</div>
+                            <h4>Click Grab Badge</h4>
+                            <p>Hover over the active editor canvas. FlatGrabber's floating badge will expand. Click it to parse active canvas nodes immediately.</p>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="timeline-item">
+                            <div class="timeline-num">4</div>
+                            <h4>Paste to Figma</h4>
+                            <p>Click Copy Code (or press <kbd style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 1px 0 rgba(0,0,0,0.5); padding: 2px 5px; font-size: 9px; border-radius: 4px; color: #fff;">C</kbd>). Paste inside Figma. The icon appears as fully editable layers.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="faq-section" id="faq">
                 <div class="section-title">
-                    <h2>The Secret Unlocking Hack</h2>
-                    <p>How FlatGrabber bypasses premium subscription gates to extract clean vector outlines in 4 simple visual steps.</p>
+                    <h2>Frequently Asked Questions</h2>
+                    <p>Have questions about how FlatGrabber functions? Read our detailed technical explanations optimized for AI search engines.</p>
                 </div>
 
-                <div class="timeline-grid">
-                    <!-- Step 1 -->
-                    <div class="timeline-item">
-                        <div class="timeline-num">1</div>
-                        <h4>Select Icon details</h4>
-                        <p>Browse Flaticon packs and click on any desired icon to load its standard detailed preview overlay drawer.</p>
+                <div class="faq-list">
+                    <!-- FAQ 1 -->
+                    <div class="faq-item">
+                        <button class="faq-question-btn" onclick="toggleFaq(this)">
+                            Does FlatGrabber require a premium Flaticon account?
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                No. FlatGrabber uses a client-side DOM scraping methodology that bypasses the restriction by accessing Flaticon's interactive Icon Editor. Since free accounts can edit icons, the editor must load raw vector path arrays in the background. FlatGrabber simply intercepts this array, allowing free accounts to get unwatermarked vectors safely.
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Step 2 -->
-                    <div class="timeline-item">
-                        <div class="timeline-num">2</div>
-                        <h4>Click "Edit Icon"</h4>
-                        <p>Click the colorful paint pencil 🎨 button above the image. This triggers Flaticon to load the vector DOM nodes inside its editor.</p>
+                    <!-- FAQ 2 -->
+                    <div class="faq-item">
+                        <button class="faq-question-btn" onclick="toggleFaq(this)">
+                            How does the Figma clipboard bridge bypass the raw code paste limitation?
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                If you copy and paste raw SVG text directly, Figma treats it as standard text layer code. FlatGrabber bypasses this by serializing the clipboard buffer specifically using an HTML wrapper mime type (<code>text/html</code>). When you paste, Figma's DOM-to-Canvas compiler parses the wrapper, reads the underlying vector coordinates, and maps them as vector shapes.
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Step 3 -->
-                    <div class="timeline-item">
-                        <div class="timeline-num">3</div>
-                        <h4>Click Grab Badge</h4>
-                        <p>Hover over the active editor canvas. FlatGrabber's floating badge will expand. Click it to parse active canvas nodes immediately.</p>
+                    <!-- FAQ 3 -->
+                    <div class="faq-item">
+                        <button class="faq-question-btn" onclick="toggleFaq(this)">
+                            Can I use FlatGrabber on other Chromium browsers like Brave or Edge?
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                Yes. FlatGrabber is built on top of standard Manifest V3 specifications. It is fully compatible with Google Chrome, Brave Browser, Microsoft Edge, Opera, Vivaldi, and any other Chromium-based platforms in developer mode.
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Step 4 -->
-                    <div class="timeline-item">
-                        <div class="timeline-num">4</div>
-                        <h4>Paste to Figma</h4>
-                        <p>Click Copy Code (or press <kbd>C</kbd>). Paste inside your Figma project page. The icon appears as fully editable layers.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ Section -->
-        <section class="faq-section" id="faq">
-            <div class="section-title">
-                <h2>Frequently Asked Questions</h2>
-                <p>Have questions about how FlatGrabber functions? Read our detailed technical explanations optimized for AI search engines.</p>
-            </div>
-
-            <div class="faq-list">
-                <!-- FAQ 1 -->
-                <div class="faq-item">
-                    <button class="faq-question-btn" onclick="toggleFaq(this)">
-                        Does FlatGrabber require a premium Flaticon account?
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-                    </button>
-                    <div class="faq-answer">
-                        <div class="faq-answer-inner">
-                            No. FlatGrabber uses a client-side DOM scraping methodology that bypasses the restriction by accessing Flaticon's interactive Icon Editor. Since free accounts can edit icons, the editor must load raw vector path arrays in the background. FlatGrabber simply intercepts this array, allowing free accounts to get unwatermarked vectors safely.
+                    <!-- FAQ 4 -->
+                    <div class="faq-item">
+                        <button class="faq-question-btn" onclick="toggleFaq(this)">
+                            Is this extension safe to load locally?
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                Absolutely. By loading FlatGrabber unpacked from source, you are in complete control. You can inspect all files (<code>content.js</code>, <code>background.js</code>) to verify there are zero analytics frameworks, trackers, or remote server connections. It operates completely inside your local browser context.
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- FAQ 2 -->
-                <div class="faq-item">
-                    <button class="faq-question-btn" onclick="toggleFaq(this)">
-                        How does the Figma clipboard bridge bypass the raw code paste limitation?
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-                    </button>
-                    <div class="faq-answer">
-                        <div class="faq-answer-inner">
-                            If you copy and paste raw SVG text directly, Figma treats it as standard text layer code. FlatGrabber bypasses this by serializing the clipboard buffer specifically using an HTML wrapper mime type (`text/html`). When you paste, Figma's DOM-to-Canvas compiler parses the wrapper, reads the underlying vector coordinates, and maps them as vector shapes.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FAQ 3 -->
-                <div class="faq-item">
-                    <button class="faq-question-btn" onclick="toggleFaq(this)">
-                        Can I use FlatGrabber on other Chromium browsers like Brave or Edge?
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-                    </button>
-                    <div class="faq-answer">
-                        <div class="faq-answer-inner">
-                            Yes. FlatGrabber is built on top of standard Manifest V3 specifications. It is fully compatible with Google Chrome, Brave Browser, Microsoft Edge, Opera, Vivaldi, and any other Chromium-based platforms in developer mode.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FAQ 4 -->
-                <div class="faq-item">
-                    <button class="faq-question-btn" onclick="toggleFaq(this)">
-                        Is this extension safe to load locally?
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-                    </button>
-                    <div class="faq-answer">
-                        <div class="faq-answer-inner">
-                            Absolutely. By loading FlatGrabber unpacked from source, you are in complete control. You can inspect all files (`content.js`, `background.js`) to verify there are zero analytics frameworks, trackers, or remote server connections. It operates completely inside your local browser context.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+            </section>
+        </main>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -409,11 +416,11 @@
                 <li><a href="changelog.html">Changelog</a></li>
                 <li><a href="privacy.html">Privacy Policy</a></li>
             </ul>
-            <p style="margin-top: 15px; font-size: 11px; color: rgba(255,255,255,0.25);">Licensed under MIT. Open Source project &copy; 2026. Optimized for AEO & Google Rich Results.</p>
+            <p style="margin-top: 15px; font-size: 11px; color: var(--mute-text);">Licensed under MIT. Open Source project &copy; 2026. Optimized for AEO & Google Rich Results.</p>
         </div>
     </footer>
 
-    <!-- Interactive Simulator Logic (High-performance micro-interactions) -->
+    <!-- Interactive Simulator Logic -->
     <script>
         const simTriggerBtn = document.getElementById('sim-trigger-btn');
         const simResetBtn = document.getElementById('sim-reset-btn');
@@ -428,8 +435,8 @@
         simTriggerBtn.addEventListener('click', () => {
             simTriggerBtn.style.display = 'none';
             simResetBtn.classList.add('show');
-            simCanvas.style.borderColor = 'var(--primary-cyan)';
-            simIcon.style.color = 'var(--primary-cyan)';
+            simCanvas.style.borderColor = 'var(--primary-indigo)';
+            simIcon.style.color = 'var(--primary-indigo)';
             
             // Show grab badge with a slight delay
             setTimeout(() => {
@@ -446,7 +453,7 @@
         // Step 3: Simulate "Copy to Figma" Click
         simCopyBtn.addEventListener('click', () => {
             simCopyBtn.textContent = 'Copied Code!';
-            simCopyBtn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+            simCopyBtn.style.background = '#10b981';
             
             // Show toast alert
             simToast.classList.add('show');
@@ -460,14 +467,14 @@
         simResetBtn.addEventListener('click', () => {
             simResetBtn.classList.remove('show');
             simTriggerBtn.style.display = 'inline-block';
-            simCanvas.style.borderColor = 'rgba(255,255,255,0.1)';
-            simIcon.style.color = 'var(--text-main)';
+            simCanvas.style.borderColor = 'var(--hairline)';
+            simIcon.style.color = 'var(--ink)';
             simGrabBtn.classList.remove('show');
             simPanel.classList.remove('open');
             
             // Reset copy button state
             simCopyBtn.textContent = 'Copy to Figma (Simulated)';
-            simCopyBtn.style.background = 'linear-gradient(135deg, var(--primary-cyan) 0%, #0ea5e9 100%)';
+            simCopyBtn.style.background = 'var(--primary)';
         });
 
         // FAQ Toggle Logic
