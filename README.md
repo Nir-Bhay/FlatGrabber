@@ -1,17 +1,23 @@
 # ⚡ FlatGrabber: Premium Flaticon SVG Extractor & Figma Bridge
 
-[![Chrome Extension](https://img.shields.io/badge/Extension-Chrome-blue.svg?style=for-the-badge&logo=google-chrome)](https://developer.chrome.com/docs/extensions/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
-[![Vector Enabled](https://img.shields.io/badge/Vector-SVG%20Unlocking-orange.svg?style=for-the-badge&logo=adobe-illustrator)](https://www.w3.org/Graphics/SVG/)
-[![Figma Compatible](https://img.shields.io/badge/Figma-Bridge%20Ready-ff69b4?style=for-the-badge&logo=figma)](https://figma.com)
+<div align="center">
 
-A premium, developer-focused Google Chrome extension engineered to inspect, edit, recolor, bulk package, and extract clean high-fidelity vector SVGs directly from Flaticon. FlatGrabber features a seamless Figma clipboard bridge, enabling designers and developers to copy raw vector codes and paste them directly into Figma as fully editable vector shapes.
+![FlatGrabber Banner](https://img.shields.io/badge/FlatGrabber-Active%20&%20Unmatched-17D1C6?style=for-the-badge&logo=google-chrome&logoColor=white)
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/hgmhgljcfdbcoipnllidbbfldccdkpnb?style=for-the-badge&logo=google-chrome&logoColor=white&color=blue)](https://chrome.google.com/webstore)
+[![Figma Compatible](https://img.shields.io/badge/Figma-Bridge%20Ready-ff69b4?style=for-the-badge&logo=figma&logoColor=white)](https://figma.com)
+[![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+
+**FlatGrabber** is a professional, high-performance developer-and-designer-focused Google Chrome extension engineered to inspect, edit, recolor, bulk package, and extract clean high-fidelity vector SVGs directly from Flaticon. Features a seamless, zero-friction Figma clipboard bridge to paste vector coordinates straight onto your design canvas as fully editable layers.
+
+[Features](#-key-features) • [How it Works](#-how-the-premium-svg-interception-works) • [Step-by-Step Guide](#-the-secret-unlocking-hack-step-by-step-guide) • [Installation](#%EF%B8%8F-installation-guide) • [Deep-Dive](#-technical-deep-dive) • [Troubleshooting](#-troubleshooting--faq)
+
+</div>
 
 ---
 
 ## 🚀 Key Features
 
-*   **⚡ Smart Hover Grabber:** Non-intrusive hover triggers positioned intelligently above Flaticon grid elements to avoid blocking website controls or overlapping adjacent icon rows.
+*   **⚡ Smart Hover Grabber:** Non-intrusive hover triggers positioned intelligently in the top-right of Flaticon grid elements. Expands on hover to avoid blocking standard website controls or overlapping adjacent icon rows.
 *   **🎨 Instant Vector Recolor:** Dynamically edit colors of single icons or your entire saved collection in real time directly from the extension's panel before exporting.
 *   **✨ Bulletproof Figma Bridge:** Copy vector codes with one click (`Copy` button or `C` shortcut) and paste them directly into Figma as fully editable vector layers.
 *   **🔥 Figma Grid Packager:** Copies your entire saved collection as a single, beautifully structured coordinate grid. Paste it directly into Figma to populate your canvas instantly.
@@ -123,12 +129,36 @@ element.addEventListener('click', grabHandler, { capture: true });
 ```
 We then trigger `event.stopPropagation()` and `event.preventDefault()` to stop the event dead in its tracks before Flaticon's native routing scripts can even detect it.
 
+### 3. Recolor Processing Pipeline
+The recolor logic parses the scraped SVG XML and dynamically modifies all occurrences of standard color tags. Rather than performing simple string replacement which can corrupt tags inside code blocks, FlatGrabber uses `DOMParser` to load the SVG string as a virtual DOM document:
+```javascript
+const parser = new DOMParser();
+const svgDoc = parser.parseFromString(svgString, "image/svg+xml");
+// Traverses elements and dynamically replaces hex codes on fill and stroke attributes
+svgDoc.querySelectorAll('[fill], [stroke]').forEach(elem => {
+  // updates values
+});
+```
+
+---
+
+## ⚠️ Troubleshooting & FAQ
+
+#### Q1: Emojis are showing up as garbled characters (like `ðŸŽ¨` or `âœ...`). How do I fix this?
+We have fully solved this! Older versions had encoding mismatches. FlatGrabber's popup file now includes `<meta charset="UTF-8">` explicitly at the very beginning of the `<head>` block, ensuring emojis render perfectly on all operating systems and browser versions.
+
+#### Q2: The "SVG Code" tab is disabled and greyed out. Why?
+This occurs because the icon you selected does not have underlying vector coordinate data available in the DOM (some legacy icons on Flaticon are pure PNG uploads). FlatGrabber handles this gracefully by showing a tooltip explanation and keeping the "PNG Image" tab active so your experience remains smooth.
+
+#### Q3: Why does the Grab button not show up on some search results?
+Make sure you are hovering over the main icon grid card. If Flaticon changes its grid CSS class names during updates, click the **"Inspect Mode"** (or press <kbd>I</kbd>) to force-activate the target highlighter and click any SVG manually.
+
 ---
 
 ## 📡 SEO Optimizations & Keywords
 
 This repository is optimized for discoverability across search engines and developer ecosystems:
-*   **Primary Keywords:** *Flaticon SVG Downloader, Figma Vector Bridge, Chrome SVG Grabber, Inline SVG Extractor, Chrome Extension SVG Parser, Extract SVGs to Figma, Recolor SVGs Online, Premium SVG Unlocker.*
+*   **Primary Keywords:** *Flaticon SVG Downloader, Figma Vector Bridge, Chrome SVG Grabber, Inline SVG Extractor, Chrome Extension SVG Parser, Extract SVGs to Figma, Recolor SVGs Online, Premium SVG Unlocker, FlatGrabber.*
 *   **Compatible Browsers:** Google Chrome, Brave Browser, Microsoft Edge, Opera, Vivaldi, and other Chromium-based platforms.
 *   **Figma Integration:** Fully matches Figma's desktop and web clipboard formats for zero-friction paste operations.
 
