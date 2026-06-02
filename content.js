@@ -368,8 +368,20 @@
        hotkeyBadge.style.visibility = "visible";
     });
     el.addEventListener("mousemove", (e) => {
-       hotkeyBadge.style.left = (e.clientX + 14) + "px";
-       hotkeyBadge.style.top = (e.clientY + 14) + "px";
+       const badgeWidth = hotkeyBadge.offsetWidth || 100;
+       const badgeHeight = hotkeyBadge.offsetHeight || 28;
+       let x = e.clientX + 14;
+       let y = e.clientY + 14;
+       
+       if (x + badgeWidth > window.innerWidth) {
+           x = e.clientX - badgeWidth - 10;
+       }
+       if (y + badgeHeight > window.innerHeight) {
+           y = e.clientY - badgeHeight - 10;
+       }
+       
+       hotkeyBadge.style.left = x + "px";
+       hotkeyBadge.style.top = y + "px";
     });
     el.addEventListener("mouseleave", () => {
        hotkeyBadge.style.opacity = "0";
