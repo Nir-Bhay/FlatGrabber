@@ -101,7 +101,7 @@
               "name": "Does FlatGrabber require a premium Flaticon subscription?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "No. FlatGrabber uses a client-side canvas interception hack that bypasses premium gates by grabbing vector paths directly from Flaticon's interactive Icon Editor, which is accessible to free accounts."
+                "text": "No. FlatGrabber acts as an active front-end DOM inspector. When Flaticon's interactive editor loads vector assets in the viewport, the extension extracts the clean SVG coordinate layers directly from the browser's DOM context."
               }
             },
             {
@@ -298,12 +298,12 @@
                 </div>
             </section>
 
-            <!-- Secret Hack Section -->
+            <!-- DOM Extraction Section -->
             <section class="timeline-section" id="hack">
                 <div class="container">
                     <div class="section-title">
-                        <h2>The Secret Unlocking Hack</h2>
-                        <p>How FlatGrabber bypasses premium subscription gates to extract clean vector outlines in 4 simple steps.</p>
+                        <h2>DOM Vector Extraction Workflow</h2>
+                        <p>How FlatGrabber inspects active page nodes to format clean vector markup in 4 simple steps.</p>
                     </div>
 
                     <div class="timeline-grid">

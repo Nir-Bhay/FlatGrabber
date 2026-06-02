@@ -9,7 +9,7 @@
 
 **FlatGrabber** is a professional, high-performance developer-and-designer-focused Google Chrome extension engineered to inspect, edit, recolor, bulk package, and extract clean high-fidelity vector SVGs directly from Flaticon. Features a seamless, zero-friction Figma clipboard bridge to paste vector coordinates straight onto your design canvas as fully editable layers.
 
-[Features](#-key-features) • [How it Works](#-how-the-premium-svg-interception-works) • [Step-by-Step Guide](#-the-secret-unlocking-hack-step-by-step-guide) • [Installation](#%EF%B8%8F-installation-guide) • [Deep-Dive](#-technical-deep-dive) • [Troubleshooting](#-troubleshooting--faq)
+[Features](#-key-features) • [How it Works](#-how-dom-vector-extraction-works) • [Step-by-Step Guide](#-dom-vector-extraction-guide-step-by-step) • [Installation](#%EF%B8%8F-installation-guide) • [Deep-Dive](#-technical-deep-dive) • [Troubleshooting](#-troubleshooting--faq)
 
 </div>
 
@@ -28,9 +28,9 @@
 
 ---
 
-## ⚙️ How the Premium SVG Interception Works
+## ⚙️ How DOM Vector Extraction Works
 
-Flaticon natively restricts direct access to high-fidelity vector files for free accounts on search/modal grid screens. This extension bypasses that limitation using a built-in canvas scraping technique inside Flaticon's own **Icon Editor**. 
+FlatGrabber functions as an advanced front-end debugging and inspection tool. It inspects and parses the active SVG node structures loaded into the browser's DOM when running Flaticon's online canvas editor, formatting them into developer-compliant XML.
 
 ```mermaid
 sequenceDiagram
@@ -43,7 +43,7 @@ sequenceDiagram
     
     Designer->>Page: Click "Edit icon" Pencil Button
     Page->>Editor: Load Vector Canvas Editor
-    Note over Editor: Bypasses Premium Subscription Gate<br/>loads raw vectors in Canvas DOM
+    Note over Editor: Loads raw vector path markup<br/>directly in browser DOM context
     Scraper->>Editor: Inject Grab UI & Canvas Interceptor
     Designer->>Scraper: Click Floating "Click to Grab SVG" Button
     Scraper->>Editor: Traverses canvas layers & grabs raw vector paths
@@ -55,9 +55,9 @@ sequenceDiagram
 
 ---
 
-## 🔥 The Secret Unlocking Hack (Step-by-Step Guide)
+## 🔍 DOM Vector Extraction Guide (Step-by-Step)
 
-To extract clean, unwatermarked vectors for **any** vector-compatible icon, follow this simple procedure:
+To extract clean vector paths for testing and debugging any compatible icon layout, follow this simple procedure:
 
 ![Unlocking Hack Flow](docs/assets/unlocking_hack_flow.svg)
 
@@ -151,12 +151,32 @@ Make sure you are hovering over the main icon grid card. If Flaticon changes its
 
 ---
 
+---
+
 ## 📡 SEO Optimizations & Keywords
 
 This repository is optimized for discoverability across search engines and developer ecosystems:
-*   **Primary Keywords:** *Flaticon SVG Downloader, Figma Vector Bridge, Chrome SVG Grabber, Inline SVG Extractor, Chrome Extension SVG Parser, Extract SVGs to Figma, Recolor SVGs Online, Premium SVG Unlocker, FlatGrabber.*
+*   **Primary Keywords:** *Flaticon SVG Downloader, Figma Vector Bridge, Chrome SVG Grabber, Inline SVG Extractor, Chrome Extension SVG Parser, Extract SVGs to Figma, Recolor SVGs Online, Developer SVG Inspector, FlatGrabber.*
 *   **Compatible Browsers:** Google Chrome, Brave Browser, Microsoft Edge, Opera, Vivaldi, and other Chromium-based platforms.
 *   **Figma Integration:** Fully matches Figma's desktop and web clipboard formats for zero-friction paste operations.
+
+---
+
+## ⚖️ Legal & Educational Disclaimer
+
+> [!IMPORTANT]
+> **Please read this disclaimer carefully before using this software.**
+
+This project is an **open-source educational and technical research experiment** designed to study:
+1. **Front-End DOM Analysis:** How vector paths are drawn, nested, and manipulated within in-browser inline canvas elements.
+2. **Event Manipulation:** The mechanics of capture-phase event hijacking (`{ capture: true }`) and event interception techniques.
+3. **Clipboard Interoperability:** Custom clipboard formatting (`text/html` wrapper MIME mappings) to enable seamless data transitions to design platforms like Figma.
+
+### 🔴 Terms of Service and Compliance
+*   **No Affiliation:** FlatGrabber is an independent developer-built tool. It is **not** associated, affiliated, authorized, endorsed by, or in any way officially connected with Freepik Company S.L., Flaticon, or any of their subsidiaries.
+*   **Academic & Testing Use Only:** This extension is intended strictly for personal research, educational analysis, layout testing, and design system formatting experiments. 
+*   **Commercial Use Restrictions:** We **strictly discourage** any commercial usage of assets extracted through this educational tool without holding the respective premium licenses. Users are solely responsible for ensuring their usage complies with regional copyright laws, Intellectual Property (IP) rights, and the terms of service of any third-party websites they interact with.
+*   **Provided "AS IS":** This software is provided under the MIT License on an "AS IS" basis. The authors and contributors assume no liability for any misuse, terms violation, account suspension, or loss of any kind arising from the execution or deployment of this tool.
 
 ---
 

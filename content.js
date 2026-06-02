@@ -28,6 +28,9 @@
   let hideTimeout = null;
   let activeFormat = "beautify"; // beautify | minify
   let activeSubTab = "svg";
+  let recentColors = JSON.parse(localStorage.getItem("flaticon_recent_colors") || '["#171717","#007cf0","#00dfd8","#7928ca","#ff0080"]');
+  let activeScale = 512;
+  let previewBgState = 0; // 0=checker, 1=dark, 2=light
 
   // ---------- ALGORITHMS ----------
 
@@ -77,10 +80,33 @@
       // Enforce standard SVG namespace
       svgEl.setAttribute("xmlns", "http://www.w3.org/2000/svg");
 
-      return svgEl.outerHTML;
+      let out = svgEl.outerHTML;
+      if (activeFormat === "minify") {
+          out = out.replace(/>\s+</g, "><").replace(/\s{2,}/g, " ");
+      }
+      return out;
     } catch (e) {
       return svgString;
     }
+  }
+
+  function applyScaleToSVG(svgString, size) {
+    if(!svgString) return "";
+    try {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(svgString, "image/svg+xml");
+      if (doc.querySelector("parsererror")) return svgString;
+      const svg = doc.documentElement;
+      const w = svg.getAttribute("width");
+      const h = svg.getAttribute("height");
+      const vb = svg.getAttribute("viewBox");
+      if (!vb && w && h) {
+          svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
+      }
+      svg.setAttribute("width", size);
+      svg.setAttribute("height", size);
+      return svg.outerHTML;
+    } catch(e) { return svgString; }
   }
 
   // Native high-fidelity SVG/XML formatting algorithm
@@ -222,7 +248,8 @@
     </div>
 
     <div id="sgp-view-single" class="sgp-view active-view">
-      <div id="sgp-preview-box">
+      <div id="sgp-preview-box" class="sgp-bg-checker">
+        <button id="sgp-bg-toggle" class="sgp-btn-small" title="Toggle Canvas Mode" style="position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; padding: 4px; font-size: 14px; cursor: pointer; z-index: 10;">🌗</button>
         <img id="sgp-preview-img" src="" alt="Preview..." />
       </div>
       
@@ -231,9 +258,17 @@
         <button class="sgp-sub-tab" data-sub="url">Image Tag</button>
       </div>
 
-      <div class="sgp-format-toggle-wrap" id="sgp-format-tabs" style="display:none;">
-        <button class="sgp-format-btn active" data-fmt="beautify">Beautified</button>
-        <button class="sgp-format-btn" data-fmt="minify">Minified</button>
+      <div class="sgp-format-toggle-wrap" id="sgp-format-tabs" style="display:none; justify-content: space-between;">
+        <div class="sgp-scale-toggles" style="display: flex; gap: 4px;">
+          <button class="sgp-scale-btn" data-scale="24">24</button>
+          <button class="sgp-scale-btn" data-scale="32">32</button>
+          <button class="sgp-scale-btn" data-scale="48">48</button>
+          <button class="sgp-scale-btn active" data-scale="512">512</button>
+        </div>
+        <div style="display: flex; gap: 4px;">
+          <button class="sgp-format-btn active" data-fmt="beautify">Beautified</button>
+          <button class="sgp-format-btn" data-fmt="minify">Minified</button>
+        </div>
       </div>
 
       <div id="sgp-code-box">
@@ -258,13 +293,16 @@
 
       <div id="sgp-collection-list"></div>
       
-      <div id="sgp-collection-toolbar" style="display:none;">
-        <span class="sgp-toolbar-label">${ICON_PALETTE} Recolor:</span>
-        <div class="sgp-color-wrap">
-           <input type="color" id="sgp-color-picker" value="#000000" title="Pick a color">
-           <input type="text" id="sgp-color-hex" value="#000000" maxlength="7" spellcheck="false">
+      <div id="sgp-collection-toolbar" style="display:none; flex-direction: column; gap: 8px; align-items: stretch;">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <span class="sgp-toolbar-label">${ICON_PALETTE} Recolor:</span>
+          <div class="sgp-color-wrap">
+             <input type="color" id="sgp-color-picker" value="#000000" title="Pick a color">
+             <input type="text" id="sgp-color-hex" value="#000000" maxlength="7" spellcheck="false">
+          </div>
+          <button id="sgp-apply-color-btn" class="sgp-btn-small">Apply</button>
         </div>
-        <button id="sgp-apply-color-btn" class="sgp-btn-small">Apply</button>
+        <div id="sgp-recent-swatches" class="sgp-recent-swatches"></div>
       </div>
 
       <div class="sgp-action-row" id="sgp-collection-actions">
@@ -278,13 +316,13 @@
     <div id="sgp-info-overlay" style="display:none;">
       <div class="sgp-info-content">
         <div class="sgp-info-header">
-          <h3>⚡ Premium SVG Unlock Guide</h3>
+          <h3>⚡ DOM Vector Extraction Guide</h3>
           <button id="sgp-info-close-btn">&times;</button>
         </div>
         <ul class="sgp-info-steps">
           <li style="border-left: 3px solid #f59e0b; padding-left: 8px; margin-bottom: 6px; background: rgba(245, 158, 11, 0.08); border-radius: 4px; padding-top: 4px; padding-bottom: 4px;">
-            <strong style="color: #f59e0b;">🔥 Secret SVG Hack (Must Read!)</strong><br/>
-            On normal search results, Flaticon blocks direct access to vector files for free accounts, disabling the SVG tab. You can easily unlock vectors with this simple trick:
+            <strong style="color: #f59e0b;">💡 Vector Extraction Mechanics</strong><br/>
+            Vector assets are processed dynamically inside active canvas nodes when loading the editor layout. To inspect underlying paths:
           </li>
           <li>
             <strong>1. Click "Edit icon"</strong><br/>
@@ -295,8 +333,8 @@
             When Flaticon's built-in editor loads, click the floating <strong style="color: #60a5fa;">"Click to grab"</strong> button right above the editor canvas.
           </li>
           <li>
-            <strong>3. Vector Unlocked!</strong><br/>
-            The extension will extract the raw high-fidelity vector paths directly from the editor's live canvas! The **SVG Code** tab will light up instantly.
+            <strong>3. Extraction Successful!</strong><br/>
+            The extension will extract the raw vector paths directly from the editor's live canvas DOM and enable the SVG Code tab.
           </li>
           <li style="border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 8px; margin-top: 4px;">
             <strong>Figma Tip:</strong> Copy the code by pressing <kbd>C</kbd>, then paste it directly into Figma as fully editable vector shapes!
@@ -316,6 +354,30 @@
 
   const toast = document.createElement("div");
   toast.id = "sgp-toast";
+  
+  const hotkeyBadge = document.createElement("div");
+  hotkeyBadge.className = "sgp-floating-kbd-badge";
+  document.body.appendChild(hotkeyBadge);
+
+  function attachHotkeyBadge(selector, label) {
+    const el = panel.querySelector(selector);
+    if (!el) return;
+    el.addEventListener("mouseenter", () => {
+       hotkeyBadge.innerHTML = label;
+       hotkeyBadge.style.opacity = "1";
+       hotkeyBadge.style.visibility = "visible";
+    });
+    el.addEventListener("mousemove", (e) => {
+       hotkeyBadge.style.left = (e.clientX + 14) + "px";
+       hotkeyBadge.style.top = (e.clientY + 14) + "px";
+    });
+    el.addEventListener("mouseleave", () => {
+       hotkeyBadge.style.opacity = "0";
+       setTimeout(() => {
+           if (hotkeyBadge.style.opacity === "0") hotkeyBadge.style.visibility = "hidden";
+       }, 200);
+    });
+  }
 
   function showToast(message) {
     toast.innerHTML = `<span>✅</span> <span>${message}</span>`;
@@ -463,8 +525,33 @@
       const orig = btn.innerText;
       btn.innerText = "Done!";
       setTimeout(() => btn.innerText = orig, 1500);
+
+      // Add to recent swatches
+      recentColors = recentColors.filter(c => c !== newColor);
+      recentColors.unshift(newColor);
+      if (recentColors.length > 5) recentColors.pop();
+      localStorage.setItem("flaticon_recent_colors", JSON.stringify(recentColors));
+      renderRecentSwatches();
     }
   });
+  
+  function renderRecentSwatches() {
+      const container = panel.querySelector("#sgp-recent-swatches");
+      if (!container) return;
+      container.innerHTML = "";
+      recentColors.forEach(c => {
+          const btn = document.createElement("button");
+          btn.className = "sgp-recent-swatch";
+          btn.style.backgroundColor = c;
+          btn.title = c;
+          btn.addEventListener("click", () => {
+              colorPicker.value = c;
+              colorHex.value = c.toUpperCase();
+              panel.querySelector("#sgp-apply-color-btn").click();
+          });
+          container.appendChild(btn);
+      });
+  }
 
   // ---------- TAB CONTROL ----------
   panel.querySelectorAll(".sgp-tab").forEach(tab => {
@@ -497,14 +584,44 @@
     });
   });
 
+  panel.querySelectorAll(".sgp-scale-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      panel.querySelectorAll(".sgp-scale-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      activeScale = parseInt(btn.dataset.scale);
+      updateCodeArea();
+    });
+  });
+
+  panel.querySelector("#sgp-bg-toggle").addEventListener("click", () => {
+    previewBgState = (previewBgState + 1) % 3;
+    const box = panel.querySelector("#sgp-preview-box");
+    box.className = ""; // clear all
+    if (previewBgState === 0) box.classList.add("sgp-bg-checker");
+    else if (previewBgState === 1) box.classList.add("sgp-bg-dark");
+    else box.classList.add("sgp-bg-light");
+  });
+
+  // Attach tooltips
+  attachHotkeyBadge("#sgp-copy-btn", "<kbd>C</kbd> copy");
+  attachHotkeyBadge("#sgp-save-btn", "<kbd>S</kbd> save");
+  attachHotkeyBadge("#sgp-inspect-toggle", "<kbd>I</kbd> inspect");
+  attachHotkeyBadge("#sgp-copy-figma-btn", "Figma Grid");
+  renderRecentSwatches();
+
   function updateCodeArea() {
     const area = panel.querySelector("#sgp-code-area");
     const formatTabs = panel.querySelector("#sgp-format-tabs");
     if (area) {
       if (activeSubTab === "svg") {
         if (formatTabs) formatTabs.style.display = "flex";
-        area.value = (activeFormat === "beautify" ? currentBeautifiedCode : currentSVGCode) 
-                  || (currentImgTag ? "No SVG found. Switch to Image Tag." : "");
+        let baseCode = applyScaleToSVG(currentSVGCode, activeScale);
+        if (activeFormat === "beautify") {
+            baseCode = beautifySVG(baseCode);
+        } else if (activeFormat === "minify") {
+            baseCode = baseCode.replace(/>\s+</g, "><").replace(/\s{2,}/g, " ");
+        }
+        area.value = baseCode || (currentImgTag ? "No SVG found. Switch to Image Tag." : "");
       } else {
         if (formatTabs) formatTabs.style.display = "none";
         area.value = currentImgTag || "No image url found.";
@@ -514,9 +631,41 @@
 
   // ---------- CLIPBOARD LOGIC ADVANCED ----------
   async function copyToClipboard(plainText, htmlText, btnElement, origHTML, successHTML) {
-    if (!plainText || plainText.startsWith("No SVG")) return;
+    if (!plainText || plainText.startsWith("No SVG")) {
+        if (currentImgTag && activeSubTab !== "svg") {
+            const wrapperHtml = `<meta charset="utf-8"><body><!--StartFragment-->${currentImgTag}<!--EndFragment--></body>`;
+            plainText = currentImgTag;
+            htmlText = wrapperHtml;
+        } else if (currentImgTag && activeSubTab === "svg") {
+            showToast("No SVG available, copying PNG image instead!");
+            const wrapperHtml = `<meta charset="utf-8"><body><!--StartFragment-->${currentImgTag}<!--EndFragment--></body>`;
+            plainText = currentImgTag;
+            htmlText = wrapperHtml;
+        } else {
+            return;
+        }
+    }
     
+    const spawnGhostPath = () => {
+       const previewImg = panel.querySelector("#sgp-preview-img");
+       if (!previewImg || !previewImg.src) return;
+       const rect = previewImg.getBoundingClientRect();
+       const ghost = document.createElement("img");
+       ghost.src = previewImg.src;
+       ghost.className = "sgp-ghost-path";
+       ghost.style.left = rect.left + "px";
+       ghost.style.top = rect.top + "px";
+       ghost.style.width = rect.width + "px";
+       ghost.style.height = rect.height + "px";
+       document.body.appendChild(ghost);
+       // trigger reflow
+       void ghost.offsetWidth;
+       ghost.classList.add("animate");
+       setTimeout(() => ghost.remove(), 1200);
+    };
+
     const showSuccess = () => {
+      spawnGhostPath();
       btnElement.innerHTML = successHTML;
       btnElement.classList.add("sgp-btn-success");
       setTimeout(() => {
